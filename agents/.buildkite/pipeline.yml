@@ -1,5 +1,5 @@
 steps:
-  - command: .ci/buildkite/jobs/agent-packer.sh
+  - command: agents/.buildkite/build.sh
     label: Build Agent Image
     agents:
       queue: packer
