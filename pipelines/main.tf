@@ -10,7 +10,7 @@ variable "github_token" {
 
 variable "github_owner" {
   type    = string
-  default = "brianseeders"
+  default = "elastic"
 }
 
 terraform {
