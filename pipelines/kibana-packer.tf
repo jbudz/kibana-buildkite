@@ -6,7 +6,7 @@ resource "buildkite_pipeline" "agent_packer" {
   env:
     GITHUB_COMMIT_STATUS_ENABLED: 'true'
     SLACK_NOTIFICATIONS_CHANNEL: '#kb-bk'
-    SLACK_NOTIFICATIONS_ENABLED: 'false'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload agents/.buildkite/pipeline.yml
