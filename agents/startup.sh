@@ -4,7 +4,7 @@ set -euxo pipefail
 
 export DEBIAN_FRONTEND="noninteractive"
 
-sudo -u buildkite-agent gcloud auth configure-docker --quiet
+sudo -u buildkite-agent gcloud auth configure-docker us-central1-docker.pkg.dev,gcr.io,us.gcr.io --quiet
 
 agentConfig="$(curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/buildkite-agent-config -qf -H "Metadata-Flavor: Google" || true)"
 
