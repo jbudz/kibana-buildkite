@@ -205,9 +205,8 @@ gcloud auth configure-docker --quiet
 # Bootstrap cache
 su - buildkite-agent <<'EOF'
 git clone /var/lib/gitmirrors/https---github-com-elastic-kibana-git /var/lib/buildkite-agent/.kibana
-git checkout buildkite-wip
-
 cd /var/lib/buildkite-agent/.kibana
+git checkout buildkite-wip
 HOME=/var/lib/buildkite-agent bash .buildkite/scripts/packer_cache.sh
 
 cd -
