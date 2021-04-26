@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 export DEBIAN_FRONTEND="noninteractive"
 
@@ -216,8 +216,21 @@ mv /tmp/bk-startup.sh /opt/bk-startup.sh
 chown root:root /opt/bk-startup.sh
 chmod +x /opt/bk-startup.sh
 
-cat /etc/buildkite-agent/buildkite-agent.cfg
 systemctl disable buildkite-agent
+
+# Setup Elastic Agent
+# https://www.elastic.co/guide/en/fleet/current/run-elastic-agent-standalone.html
+{
+  cd /tmp
+  curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.12.0-linux-x86_64.tar.gz
+  tar xzf elastic-agent-7.12.0-linux-x86_64.tar.gz
+  cd elastic-agent-7.12.0-linux-x86_64
+  cp /tmp/elastic-agent.yml .
+  sed -i "s/ELASTIC_AGENT_HOST/$(printf '%s\n' "$ELASTIC_AGENT_HOST" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
+  sed -i "s/ELASTIC_AGENT_USERNAME/$(printf '%s\n' "$ELASTIC_AGENT_USERNAME" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
+  sed -i "s/ELASTIC_AGENT_PASSWORD/$(printf '%s\n' "$ELASTIC_AGENT_PASSWORD" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
+  ./elastic-agent install -f
+}
 
 apt-get clean
 rm -rf /var/lib/apt/lists/*

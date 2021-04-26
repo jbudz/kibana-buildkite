@@ -8,6 +8,21 @@ variable "buildkite_token" {
   sensitive = true
 }
 
+variable "elastic_agent_host" {
+  type = string
+  sensitive = true
+}
+
+variable "elastic_agent_username" {
+  type = string
+  sensitive = true
+}
+
+variable "elastic_agent_password" {
+  type = string
+  sensitive = true
+}
+
 source "googlecompute" "bk_dev" {
   disk_size           = 75
   disk_type           = "pd-ssd"
@@ -34,10 +49,20 @@ build {
     source      = "hooks"
   }
 
+  provisioner "file" {
+    destination = "/tmp/elastic-agent.yml"
+    source      = "elastic-agent.yml"
+  }
+
   provisioner "shell" {
     execute_command  = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
     script           = "setup.sh"
-    environment_vars = ["BUILDKITE_TOKEN=${var.buildkite_token}"]
+    environment_vars = [
+      "BUILDKITE_TOKEN=${var.buildkite_token}",
+      "ELASTIC_AGENT_HOST=${var.elastic_agent_host}",
+      "ELASTIC_AGENT_USERNAME=${var.elastic_agent_username}",
+      "ELASTIC_AGENT_PASSWORD=${var.elastic_agent_password}"
+    ]
   }
 
 }
