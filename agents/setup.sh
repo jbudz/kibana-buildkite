@@ -172,9 +172,9 @@ git-mirrors-path="/var/lib/gitmirrors"
 #git-clone-mirror-flags="-v --bare"
 git-clone-mirror-flags="-v --bare"
 git-fetch-flags="-v"
-tags-from-gcp=true
-tags-from-gcp-labels=true
-tags-from-host=true
+#tags-from-gcp=true
+#tags-from-gcp-labels=true
+#tags-from-host=true
 timestamp-lines=true
 debug=true
 EOF
