@@ -166,7 +166,7 @@ cat > /etc/buildkite-agent/buildkite-agent.cfg <<EOF
 build-path="/var/lib/buildkite-agent/builds"
 hooks-path="/etc/buildkite-agent/hooks"
 plugins-path="/etc/buildkite-agent/plugins"
-experiment="git-mirrors,output-redactor"
+experiment="git-mirrors,output-redactor,ansi-timestamps,normalised-upload-paths,resolve-commit-after-checkout"
 git-mirrors-path="/var/lib/gitmirrors"
 #git-clone-flags="--dissociate"
 #git-clone-mirror-flags="-v --bare"
