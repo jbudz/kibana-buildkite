@@ -22,7 +22,7 @@ sudo -u buildkite-agent gcloud auth configure-docker us-central1-docker.pkg.dev,
   ELASTIC_AGENT_USERNAME="$(gcloud secrets versions access latest --secret=kibana-buildkite-elastic-agent-username)"
   ELASTIC_AGENT_PASSWORD="$(gcloud secrets versions access latest --secret=kibana-buildkite-elastic-agent-password)"
 
-  cd /tmp/elastic-agent
+  cd /opt/elastic-agent-install
   sed -i "s/ELASTIC_AGENT_HOST/$(printf '%s\n' "$ELASTIC_AGENT_HOST" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
   sed -i "s/ELASTIC_AGENT_USERNAME/$(printf '%s\n' "$ELASTIC_AGENT_USERNAME" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
   sed -i "s/ELASTIC_AGENT_PASSWORD/$(printf '%s\n' "$ELASTIC_AGENT_PASSWORD" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml

@@ -220,11 +220,11 @@ systemctl disable buildkite-agent
 # Setup Elastic Agent
 # https://www.elastic.co/guide/en/fleet/current/run-elastic-agent-standalone.html
 {
-  cd /tmp
+  cd /opt
   curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.12.0-linux-x86_64.tar.gz
   tar xzf elastic-agent-7.12.0-linux-x86_64.tar.gz
-  mv elastic-agent-7.12.0-linux-x86_64 /tmp/elastic-agent
-  cp /tmp/elastic-agent.yml /tmp/elastic-agent/
+  mv elastic-agent-7.12.0-linux-x86_64 /opt/elastic-agent-install
+  cp /tmp/elastic-agent.yml /opt/elastic-agent-install/
 }
 
 apt-get clean
