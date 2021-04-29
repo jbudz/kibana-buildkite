@@ -134,12 +134,12 @@ mkdir -p "$AGENT_HOME/.java"
 cd "$AGENT_HOME/.java"
 
 curl -O https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz
-echo "91310200f072045dc6cef2c8c23e7e6387b37c46e9de49623ce0fa461a24623d file" | sha256sum --check
+echo "91310200f072045dc6cef2c8c23e7e6387b37c46e9de49623ce0fa461a24623d openjdk-14.0.2_linux-x64_bin.tar.gz" | sha256sum --check
 tar -xvf openjdk-14.0.2_linux-x64_bin.tar.gz
 mv jdk-14.0.2 openjdk14
 
 curl -O https://download.java.net/java/GA/jdk15.0.2/0d1cfde4252546c6931946de8db48ee2/7/GPL/openjdk-15.0.2_linux-x64_bin.tar.gz
-echo "91ac6fc353b6bf39d995572b700e37a20e119a87034eeb939a6f24356fbcd207 file" | sha256sum --check
+echo "91ac6fc353b6bf39d995572b700e37a20e119a87034eeb939a6f24356fbcd207 openjdk-15.0.2_linux-x64_bin.tar.gz" | sha256sum --check
 tar -xvf openjdk-15.0.2_linux-x64_bin.tar.gz
 mv jdk-15.0.2 openjdk15
 
