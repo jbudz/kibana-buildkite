@@ -163,7 +163,6 @@ TasksAccounting=no
 EOF
 
 cat > /etc/buildkite-agent/buildkite-agent.cfg <<EOF
-token="$BUILDKITE_TOKEN"
 build-path="/var/lib/buildkite-agent/builds"
 hooks-path="/etc/buildkite-agent/hooks"
 plugins-path="/etc/buildkite-agent/plugins"
@@ -224,12 +223,8 @@ systemctl disable buildkite-agent
   cd /tmp
   curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-7.12.0-linux-x86_64.tar.gz
   tar xzf elastic-agent-7.12.0-linux-x86_64.tar.gz
-  cd elastic-agent-7.12.0-linux-x86_64
-  cp /tmp/elastic-agent.yml .
-  sed -i "s/ELASTIC_AGENT_HOST/$(printf '%s\n' "$ELASTIC_AGENT_HOST" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
-  sed -i "s/ELASTIC_AGENT_USERNAME/$(printf '%s\n' "$ELASTIC_AGENT_USERNAME" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
-  sed -i "s/ELASTIC_AGENT_PASSWORD/$(printf '%s\n' "$ELASTIC_AGENT_PASSWORD" | sed -e 's/[\/&]/\\&/g')/" elastic-agent.yml
-  ./elastic-agent install -f
+  mv elastic-agent-7.12.0-linux-x86_64 /tmp/elastic-agent
+  cp /tmp/elastic-agent.yml /tmp/elastic-agent/
 }
 
 apt-get clean
