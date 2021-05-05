@@ -16,6 +16,19 @@ sudo -u buildkite-agent gcloud auth configure-docker us-central1-docker.pkg.dev,
   echo "token=$BUILDKITE_TOKEN" >> /etc/buildkite-agent/buildkite-agent.cfg
 }
 
+# Setup local SSD support
+{
+  if [[ -e /dev/nvme0n1 ]]; then
+    mkfs.ext4 -F /dev/nvme0n1
+    mkdir -p /opt/local-ssd
+    mount -o discard,defaults,nobarrier,noatime /dev/nvme0n1 /opt/local-ssd
+    chmod a+w /opt/local-ssd
+    mkdir /opt/local-ssd/buildkite
+    chown buildkite-agent:buildkite-agent /opt/local-ssd/buildkite
+    echo 'build-path="/opt/local-ssd/buildkite/builds"' >> /etc/buildkite-agent/buildkite-agent.cfg
+  fi
+}
+
 # Setup Elastic Agent
 {
   ELASTIC_AGENT_HOST="$(gcloud secrets versions access latest --secret=kibana-buildkite-elastic-agent-host)"
