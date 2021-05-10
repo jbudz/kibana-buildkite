@@ -19,6 +19,7 @@ sudo -u buildkite-agent gcloud auth configure-docker us-central1-docker.pkg.dev,
 # Setup local SSD support
 {
   if [[ -e /dev/nvme0n1 ]]; then
+    echo "Setting up Local SSD..."
     mkfs.ext4 -F /dev/nvme0n1
     mkdir -p /opt/local-ssd
     mount -o discard,defaults,nobarrier,noatime /dev/nvme0n1 /opt/local-ssd
