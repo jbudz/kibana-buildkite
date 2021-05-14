@@ -10,7 +10,7 @@ source "googlecompute" "bk_dev" {
   image_family        = "kibana-bk-dev-agents"
   image_name          = "${local.image_id}"
   machine_type        = "n1-standard-8"
-  project_id          = "elastic-kibana-184716"
+  project_id          = "elastic-kibana-ci"
   source_image_family = "ubuntu-2004-lts"
   ssh_username        = "packer"
   zone                = "us-central1-a"
