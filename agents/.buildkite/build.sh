@@ -10,7 +10,7 @@ docker run -it --rm --init --volume "$(pwd)":/app --workdir /app hashicorp/packe
 
 echo --- Deleting images older than 30 days
 
-IMAGES=$(gcloud compute images list --format="value(name)" --filter="creationTimestamp < -P30D AND family:kibana-bk-dev-agents")
+IMAGES=$(gcloud compute images list --format="value(name)" --filter="creationTimestamp < -P30D AND family:kb-ubuntu")
 
 for IMAGE in $IMAGES
 do

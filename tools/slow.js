@@ -1,7 +1,7 @@
 const Buildkite = require('./lib/buildkite');
 
 const PIPELNE_SLUG = process.argv[2] || 'kibana';
-const BUILD_ID = process.argv[2] || 166;
+const BUILD_ID = process.argv[3] || 166;
 
 (async () => {
   const buildkite = new Buildkite();
