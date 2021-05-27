@@ -8,7 +8,7 @@ resource "buildkite_pipeline" "on-merge" {
     SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/on_merge.yml
+      command: buildkite-agent pipeline upload .buildkite/pipelines/on_merge.yml
   EOT
 
   default_branch       = "buildkite"
