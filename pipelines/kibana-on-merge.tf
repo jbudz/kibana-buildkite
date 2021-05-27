@@ -1,16 +1,14 @@
-resource "buildkite_pipeline" "baseline" {
-  name        = "kibana-baseline"
-  description = "Capture the baseline metrics/snapshots for each commit of Kibana"
+resource "buildkite_pipeline" "on-merge" {
+  name        = "kibana / on merge"
+  description = "Runs for each commit of Kibana, i.e. each time a PR is merged"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
   env:
-    GITHUB_COMMIT_STATUS_ENABLED: 'true'
-    GITHUB_COMMIT_STATUS_CONTEXT: 'buildkite/kibana-ci-baseline'
     SLACK_NOTIFICATIONS_CHANNEL: '#kb-bk'
     SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/baseline.yml
+      command: buildkite-agent pipeline upload .buildkite/on_merge.yml
   EOT
 
   default_branch       = "buildkite"
@@ -25,11 +23,11 @@ resource "buildkite_pipeline" "baseline" {
   }
 }
 
-resource "github_repository_webhook" "baseline" {
+resource "github_repository_webhook" "on-merge" {
   repository = "kibana"
 
   configuration {
-    url          = buildkite_pipeline.baseline.webhook_url
+    url          = buildkite_pipeline.on-merge.webhook_url
     content_type = "json"
     insecure_ssl = false
   }
