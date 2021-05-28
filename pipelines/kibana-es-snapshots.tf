@@ -5,11 +5,11 @@ resource "buildkite_pipeline" "es_snapshot_build" {
   steps       = <<-EOT
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/es-snapshot-build.yml
+      command: buildkite-agent pipeline upload .buildkite/pipelines/es_snapshots/build.yml
   EOT
 
-  default_branch       = "buildkite-wip"
-  branch_configuration = "buildkite-wip"
+  default_branch       = "buildkite-es-snapshots"
+  branch_configuration = "buildkite-es-snapshots"
 
   provider_settings {
     build_branches      = false
@@ -27,11 +27,11 @@ resource "buildkite_pipeline" "es_snapshot_verify" {
   steps       = <<-EOT
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/es-snapshot-verify.yml
+      command: buildkite-agent pipeline upload .buildkite/pipelines/es_snapshots/verify.yml
   EOT
 
-  default_branch       = "buildkite-wip"
-  branch_configuration = "buildkite-wip"
+  default_branch       = "buildkite-es-snapshots"
+  branch_configuration = "buildkite-es-snapshots"
 
   provider_settings {
     build_branches      = false
@@ -49,11 +49,11 @@ resource "buildkite_pipeline" "es_snapshot_promote" {
   steps       = <<-EOT
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/es-snapshot-promote.yml
+      command: buildkite-agent pipeline upload .buildkite/pipelines/es_snapshots/promote.yml
   EOT
 
-  default_branch       = "buildkite-wip"
-  branch_configuration = "buildkite-wip"
+  default_branch       = "buildkite-es-snapshots"
+  branch_configuration = "buildkite-es-snapshots"
 
   provider_settings {
     build_branches      = false
