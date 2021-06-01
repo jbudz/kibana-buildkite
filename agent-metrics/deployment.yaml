@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buildkite-agent-metrics-deployment
+  labels:
+    app: buildkite-agent-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buildkite-agent-metrics
+  template:
+    metadata:
+      labels:
+        app: buildkite-agent-metrics
+    spec:
+      serviceAccountName: buildkite-agent-metrics
+      containers:
+        - name: buildkite-agent-metrics
+          image: us-central1-docker.pkg.dev/elastic-kibana-ci/elastic-kibana-ci-docker/buildkite-agent-metrics:latest
+          imagePullPolicy: Always
+          command:
+            - /bin/sh
+            - -c
+            - './buildkite-agent-metrics -token $BUILDKITE_AGENT_TOKEN -backend stackdriver -interval 30s -stackdriver-projectid elastic-kibana-ci'
+          env:
+            - name: BUILDKITE_AGENT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: buildkite-agent-metrics
+                  key: token

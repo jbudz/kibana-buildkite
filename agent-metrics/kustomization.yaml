@@ -1,0 +1,10 @@
+namespace: buildkite-agent-metrics
+generatorOptions:
+  disableNameSuffixHash: true
+secretGenerator:
+  - name: buildkite-agent-metrics
+    envs:
+      - .env.secret
+resources:
+  - serviceaccount.yaml
+  - deployment.yaml
