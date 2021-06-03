@@ -12,7 +12,7 @@ resource "buildkite_pipeline" "on-merge" {
   EOT
 
   default_branch       = "master"
-  branch_configuration = "master"
+  branch_configuration = "master 7.x"
 
   provider_settings {
     build_branches      = true
