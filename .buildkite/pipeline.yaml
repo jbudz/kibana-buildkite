@@ -1,0 +1,9 @@
+steps:
+  - label: 'Triggering pipelines'
+    plugins:
+      - chronotc/monorepo-diff#v2.0.4:
+          watch:
+            - path:
+                - 'pipelines/'
+              config:
+                trigger: kibana-buildkite-pipelines-deploy

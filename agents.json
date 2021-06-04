@@ -80,6 +80,13 @@
         "serviceAccount": "buildkite-packer-agent@elastic-kibana-ci.iam.gserviceaccount.com",
         "maximumAgents": 10,
         "machineType": "e2-small"
+      },
+      {
+        "queue": "terraform",
+        "name": "kb-terraform",
+        "serviceAccount": "buildkite-terraform@elastic-kibana-ci.iam.gserviceaccount.com",
+        "maximumAgents": 10,
+        "machineType": "e2-small"
       }
     ]
   }
