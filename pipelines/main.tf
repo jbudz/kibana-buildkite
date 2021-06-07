@@ -28,7 +28,7 @@ terraform {
   }
 
   backend "gcs" {
-    bucket = "elastic-kibana-184716-kibana-buildkite-tfstate"
+    bucket = "elastic-kibana-ci-kibana-pipelines-tfstate"
     prefix = "terraform/state"
   }
 }

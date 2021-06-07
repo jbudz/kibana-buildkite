@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -euo pipefail
-
-TF_VAR_github_token=$(vault read -field=github_token secret/kibana-issues/dev/kibanamachine)
-export TF_VAR_github_token
-
-TF_VAR_buildkite_token=$(vault read -field=buildkite_token secret/kibana-issues/dev/kibana-buildkite)
-export TF_VAR_buildkite_token
