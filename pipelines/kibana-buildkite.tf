@@ -1,6 +1,6 @@
 resource "buildkite_pipeline" "kibana-buildkite-trigger" {
   name        = "kibana-buildkite / trigger"
-  description = "Triggers pipelines on commit based on the changed files in the commit."
+  description = "Triggers pipelines on commit based on the changed files in the commit"
   repository  = "https://github.com/elastic/kibana-buildkite.git"
   steps       = <<-EOT
   env:
