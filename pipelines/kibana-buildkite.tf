@@ -4,7 +4,7 @@ resource "buildkite_pipeline" "kibana-buildkite-pipelines-deploy" {
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kb-bk'
-    SLACK_NOTIFICATIONS_ENABLED: 'true'
+    SLACK_NOTIFICATIONS_ENABLED: 'false'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload pipelines/.buildkite/deploy.yml
