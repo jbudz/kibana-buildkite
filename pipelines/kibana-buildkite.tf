@@ -4,8 +4,8 @@ resource "buildkite_pipeline" "kibana-buildkite-trigger" {
   repository  = "https://github.com/elastic/kibana-buildkite.git"
   steps       = <<-EOT
   env:
-    SLACK_NOTIFICATIONS_CHANNEL: '#kb-bk'
-    SLACK_NOTIFICATIONS_ENABLED: 'false'
+    SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
@@ -28,8 +28,8 @@ resource "buildkite_pipeline" "kibana-buildkite-pipelines-deploy" {
   repository  = "https://github.com/elastic/kibana-buildkite.git"
   steps       = <<-EOT
   env:
-    SLACK_NOTIFICATIONS_CHANNEL: '#kb-bk'
-    SLACK_NOTIFICATIONS_ENABLED: 'false'
+    SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload pipelines/.buildkite/deploy.yml
