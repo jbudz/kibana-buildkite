@@ -46,3 +46,17 @@ resource "buildkite_pipeline" "kibana-buildkite-pipelines-deploy" {
     trigger_mode = "code"
   }
 }
+
+resource "github_repository_webhook" "kibana-buildkite-trigger" {
+  repository = "kibana-buildkite"
+
+  configuration {
+    url          = buildkite_pipeline.kibana-buildkite-trigger.webhook_url
+    content_type = "json"
+    insecure_ssl = false
+  }
+
+  active = true
+
+  events = ["push"]
+}
