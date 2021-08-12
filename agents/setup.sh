@@ -199,6 +199,8 @@ chmod +x /etc/buildkite-agent/hooks/*
 
 gcloud auth configure-docker --quiet
 
+gcloud components install kubectl --quiet
+
 # Setup git mirrors
 {
   mkdir -p /var/lib/gitmirrors
