@@ -1,3 +1,7 @@
+locals {
+  demo_env_branches = ["master", "7.x"]
+}
+
 resource "buildkite_pipeline" "demo-env" {
   name        = "kibana / demo-environment"
   description = "Creates/updates demo environment for kibana with example plugins"
@@ -11,8 +15,8 @@ resource "buildkite_pipeline" "demo-env" {
       command: buildkite-agent pipeline upload .buildkite/pipelines/update_demo_env.yml
   EOT
 
-  default_branch       = "persistent-deployment"
-  branch_configuration = "persistent-deployment"
+  default_branch       = "master"
+  branch_configuration = join(" ", local.demo_env_branches)
 
   provider_settings {
     build_branches      = false
@@ -26,8 +30,10 @@ resource "buildkite_pipeline" "demo-env" {
 }
 
 resource "buildkite_pipeline_schedule" "demo-env-daily" {
+  for_each = toset(local.demo_env_branches)
+
   pipeline_id = buildkite_pipeline.demo-env.id
   label       = "Daily build"
   cronline    = "0 7 * * * America/New_York"
-  branch      = buildkite_pipeline.demo-env.default_branch
+  branch      = each.value
 }
