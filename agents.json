@@ -45,6 +45,12 @@
         "localSsds": 1
       },
       {
+        "queue": "n2-2",
+        "name": "kb-n2-2",
+        "machineType": "n2-standard-2",
+        "localSsds": 1
+      },
+      {
         "queue": "jest",
         "name": "kb-jest",
         "machineType": "n2-standard-2",
