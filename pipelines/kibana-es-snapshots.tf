@@ -1,6 +1,6 @@
 locals {
   # TODO use current_dev_branches var when it exists and es stuff has been backported
-  es_snapshot_branches = ["buildkite-es-snapshots"]
+  es_snapshot_branches = ["master"]
 }
 
 resource "buildkite_pipeline" "es_snapshot_build" {
@@ -8,13 +8,16 @@ resource "buildkite_pipeline" "es_snapshot_build" {
   description = "Build new Elasticsearch snapshots for use by kbn-es / FTR"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
+  env:
+    SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/es_snapshots/build.yml
   EOT
 
-  default_branch       = "buildkite-es-snapshots"
-  branch_configuration = "buildkite-es-snapshots"
+  default_branch       = "master"
+  branch_configuration = "master"
 
   provider_settings {
     build_branches      = false
@@ -30,13 +33,16 @@ resource "buildkite_pipeline" "es_snapshot_verify" {
   description = "Verify Elasticsearch snapshots for use by kbn-es / FTR"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
+  env:
+    SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/es_snapshots/verify.yml
   EOT
 
-  default_branch       = "buildkite-es-snapshots"
-  branch_configuration = "buildkite-es-snapshots"
+  default_branch       = "master"
+  branch_configuration = "master"
 
   provider_settings {
     build_branches      = false
@@ -52,13 +58,16 @@ resource "buildkite_pipeline" "es_snapshot_promote" {
   description = "Promote Elasticsearch snapshots for use by kbn-es / FTR"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
+  env:
+    SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/es_snapshots/promote.yml
   EOT
 
-  default_branch       = "buildkite-es-snapshots"
-  branch_configuration = "buildkite-es-snapshots"
+  default_branch       = "master"
+  branch_configuration = "master"
 
   provider_settings {
     build_branches      = false
@@ -74,7 +83,6 @@ resource "buildkite_pipeline_schedule" "es_snapshot_build_daily" {
 
   pipeline_id = buildkite_pipeline.es_snapshot_build.id
   label       = "Daily build"
-  // cronline    = "0 12 * * * America/New_York"
-  cronline = "0 */4 * * * America/New_York"
+  cronline    = "0 10 * * * America/New_York"
   branch   = each.value
 }
