@@ -20,10 +20,10 @@
       {
         "queue": "default",
         "name": "kb-default",
-        "minimumAgents": 1,
+        "minimumAgents": 2,
         "maximumAgents": 100,
         "idleTimeoutMins": 60,
-        "machineType": "e2-small",
+        "machineType": "n2-standard-2",
         "exitAfterOneJob": false
       },
       {
