@@ -1,8 +1,3 @@
-locals {
-  # TODO use current_dev_branches var when it exists and es stuff has been backported
-  es_snapshot_branches = ["master"]
-}
-
 resource "buildkite_pipeline" "es_snapshot_build" {
   name        = "kibana / elasticsearch snapshot build"
   description = "Build new Elasticsearch snapshots for use by kbn-es / FTR"
@@ -17,7 +12,7 @@ resource "buildkite_pipeline" "es_snapshot_build" {
   EOT
 
   default_branch       = "master"
-  branch_configuration = "master"
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     build_branches      = false
@@ -42,7 +37,7 @@ resource "buildkite_pipeline" "es_snapshot_verify" {
   EOT
 
   default_branch       = "master"
-  branch_configuration = "master"
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     build_branches      = false
@@ -67,7 +62,7 @@ resource "buildkite_pipeline" "es_snapshot_promote" {
   EOT
 
   default_branch       = "master"
-  branch_configuration = "master"
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     build_branches      = false
@@ -79,10 +74,10 @@ resource "buildkite_pipeline" "es_snapshot_promote" {
 }
 
 resource "buildkite_pipeline_schedule" "es_snapshot_build_daily" {
-  for_each = toset(local.es_snapshot_branches)
+  for_each = toset(local.current_dev_branches)
 
   pipeline_id = buildkite_pipeline.es_snapshot_build.id
   label       = "Daily build"
   cronline    = "0 10 * * * America/New_York"
-  branch   = each.value
+  branch      = each.value
 }
