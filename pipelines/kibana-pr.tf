@@ -3,6 +3,8 @@ resource "buildkite_pipeline" "pull-request" {
   description = "Runs manually for pull requests"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
+  env:
+    PR_COMMENTS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/pull_request.yml
