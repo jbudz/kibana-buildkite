@@ -5,14 +5,14 @@ resource "buildkite_pipeline" "hourly" {
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
-    SLACK_NOTIFICATIONS_ENABLED: 'false'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/hourly.yml
   EOT
 
-  default_branch       = "buildkite-hourly-ci"
-  branch_configuration = "buildkite-hourly-ci"
+  default_branch       = "master"
+  branch_configuration = join(" ", local.hourly_branches)
 
   provider_settings {
     build_branches      = true
@@ -23,16 +23,11 @@ resource "buildkite_pipeline" "hourly" {
   }
 }
 
-// resource "github_repository_webhook" "hourly" {
-//   repository = "kibana"
+resource "buildkite_pipeline_schedule" "hourly-ci" {
+  for_each = toset(local.hourly_branches)
 
-//   configuration {
-//     url          = buildkite_pipeline.hourly.webhook_url
-//     content_type = "json"
-//     insecure_ssl = false
-//   }
-
-//   active = true
-
-//   events = ["push"]
-// }
+  pipeline_id = buildkite_pipeline.hourly.id
+  label       = "Hourly build"
+  cronline    = "0 * * * * America/New_York"
+  branch      = each.value
+}
