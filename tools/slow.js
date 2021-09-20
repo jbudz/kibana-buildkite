@@ -1,12 +1,11 @@
 const Buildkite = require('./lib/buildkite');
 
-const PIPELNE_SLUG = process.argv[2] || 'kibana';
-const BUILD_ID = process.argv[3] || 166;
+const { buildNumber, pipelineSlug } = require('./lib/getBuildFromArgs')();
 
 (async () => {
   const buildkite = new Buildkite();
 
-  const build = await buildkite.getBuild(PIPELNE_SLUG, BUILD_ID);
+  const build = await buildkite.getBuild(pipelineSlug, buildNumber);
 
   const steps = build.jobs
     .filter((job) => job.type === 'script')
@@ -24,6 +23,6 @@ const BUILD_ID = process.argv[3] || 166;
   });
 
   for (const step of steps) {
-    console.log(`${step.duration.toString().substr(0, 4)} ${step.name}`);
+    console.log(`${step.duration.toString().substr(0, 4)} ${step.name} ${step.parallel_group_index !== null ? '#' + (step.parallel_group_index + 1) : ''}`);
   }
 })();
