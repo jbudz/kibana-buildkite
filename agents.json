@@ -10,7 +10,7 @@
     "diskSizeGb": 75,
     "overprovision": 0,
     "minimumAgents": 0,
-    "maximumAgents": 50,
+    "maximumAgents": 225,
     "gracefulStopAfterMins": 360,
     "hardStopAfterMins": 540,
     "idleTimeoutMins": 10,
@@ -48,6 +48,12 @@
         "queue": "n2-2",
         "name": "kb-n2-2",
         "machineType": "n2-standard-2",
+        "localSsds": 1
+      },
+      {
+        "queue": "n2-4",
+        "name": "kb-n2-4",
+        "machineType": "n2-standard-4",
         "localSsds": 1
       },
       {
