@@ -4,6 +4,11 @@ const pipelineSlug = process.argv[2];
 const branch = process.argv[3];
 const count = (process.argv[4] && parseInt(process.argv[4])) || 10;
 
+if (!pipelineSlug) {
+  console.error('Usage: node failures.js <pipeline-slug> [branch] [count]');
+  process.exit(1);
+}
+
 (async () => {
   const buildkite = new Buildkite();
 
