@@ -1,24 +1,26 @@
 const Buildkite = require('./lib/buildkite');
 
+const { buildNumber, pipelineSlug } = require('./lib/getBuildFromArgs')();
+
 // https://cloud.google.com/products/calculator
 const COSTS_PER_MINUTE = {
-  default: 0,
+  default: 0.00002698 * 60,
   'ci-group': 0.031 / 4.35,
   'ci-group-4d': 0.0028,
   'ci-group-6': 0.0045,
-  bootstrap: 0.0138,
-  jest: 0.00166,
+  jest: 0.00002698 * 60,
+  'n2-2': 0.00002698 * 60,
+  'c2-16': 0.00023192 * 60,
+  'c2-8': 0.00011596 * 60,
+  'c2-4': 0.00005798 * 60,
 };
 
-const JENKINS_COST = (0.242 / 4.35) * 60 * 2 + 0.78;
-
-const PIPELNE_SLUG = process.argv[2] || 'kibana';
-const BUILD_ID = process.argv[3] || 166;
+const JENKINS_COST = (0.242 / 4.35) * 140 + 0.78;
 
 (async () => {
   const buildkite = new Buildkite();
 
-  const build = await buildkite.getBuild(PIPELNE_SLUG, BUILD_ID);
+  const build = await buildkite.getBuild(pipelineSlug, buildNumber);
 
   const steps = build.jobs
     .filter((job) => job.type === 'script')
