@@ -6,7 +6,7 @@ const getBuildPartsFromArgs = () => {
     process.exit(1);
   }
 
-  const match = url.match(/https:\/\/buildkite.com\/elastic\/(.*)\/builds\/(\d+)/);
+  const match = url.match(/https:\/\/buildkite.com\/elastic\/(.*)\/builds\/(\d+)(#([0-9a-z\-]+))?/);
 
   if (!match) {
     throw new Error(`Could not parse buildkite url: ${url}`);
@@ -14,6 +14,7 @@ const getBuildPartsFromArgs = () => {
     return {
       pipelineSlug: match[1],
       buildNumber: match[2],
+      jobId: match[4] || null,
     };
   }
 };

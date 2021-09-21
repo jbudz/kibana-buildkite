@@ -43,6 +43,26 @@ class Buildkite {
     const resp = await this.http.get(link);
     return resp.data;
   };
+
+  getArtifactsForJob = async (pipelineSlug, buildNumber, jobId) => {
+    const link = `v2/organizations/elastic/pipelines/${pipelineSlug}/builds/${buildNumber}/jobs/${jobId}/artifacts`;
+    const resp = await this.http.get(link);
+
+    return resp.data;
+  };
+
+  downloadXmlArtifactsForJob = async (pipelineSlug, buildNumber, jobId) => {
+    const artifacts = await this.getArtifactsForJob(pipelineSlug, buildNumber, jobId);
+    const xmlArtifacts = artifacts.filter((artifact) => artifact.filename.endsWith('.xml'));
+
+    const downloaded = await Promise.all(
+      xmlArtifacts.map(async (artifact) => {
+        return (await this.http.get(artifact.download_url)).data;
+      })
+    );
+
+    return downloaded;
+  };
 }
 
 module.exports = Buildkite;
