@@ -28,7 +28,18 @@ class Buildkite {
   }
 
   getBuild = async (pipelineSlug, buildNumber) => {
-    const link = `v2/organizations/elastic/pipelines/${pipelineSlug}/builds/${buildNumber}`;
+    const link = `v2/organizations/elastic/pipelines/${pipelineSlug}/builds/${buildNumber}?include_retried_jobs=true`;
+    const resp = await this.http.get(link);
+    return resp.data;
+  };
+
+  getBuilds = async (pipelineSlug, count = 10, branch = null) => {
+    let link = `v2/organizations/elastic/pipelines/${pipelineSlug}/builds/?include_retried_jobs=true&per_page=${count}`;
+
+    if (branch) {
+      link += `&branch=${branch}`;
+    }
+
     const resp = await this.http.get(link);
     return resp.data;
   };
