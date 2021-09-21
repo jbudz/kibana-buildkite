@@ -32,3 +32,11 @@ Sorts the jobs/steps of a build by duration, and outputs the durations as well
 `node failures <pipeline_slug> [branch] [count]`
 
 Summarizes step failures across the latest `count` builds, and displays up to 3 example URLs for each.
+
+### JUnit
+
+`node junit <buildkite_step_url>`
+
+(Open a step in a Buildkite build so that the URL contains the build ID in the hash)
+
+Downloads all of the JUnit artifacts for a given build step, and shows a bunch of sorted output based on execution times.
