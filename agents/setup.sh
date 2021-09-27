@@ -253,6 +253,7 @@ rm -rf /var/lib/apt/lists/*
 
 # Bootstrap cache
 su - buildkite-agent <<'EOF'
+set -e
 git clone /var/lib/gitmirrors/https---github-com-elastic-kibana-git /var/lib/buildkite-agent/.kibana
 cd /var/lib/buildkite-agent/.kibana
 git checkout master
