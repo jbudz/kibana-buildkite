@@ -5,7 +5,6 @@ resource "buildkite_pipeline" "agent_packer" {
   steps       = <<-EOT
   env:
     GITHUB_COMMIT_STATUS_ENABLED: 'true'
-    SLACK_NOTIFICATIONS_CHANNEL: '#kb-bk'
     SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"

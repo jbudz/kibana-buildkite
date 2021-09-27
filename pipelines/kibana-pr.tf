@@ -7,7 +7,7 @@ resource "buildkite_pipeline" "pull-request" {
     PR_COMMENTS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/pipelines/pull_request.yml
+      command: .buildkite/scripts/pipelines/pull_request/pipeline.sh
   EOT
 
   default_branch       = "master"
