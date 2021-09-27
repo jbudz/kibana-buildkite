@@ -157,8 +157,25 @@ APT::Periodic::Enable "0";
 EOF
 
 cat >> /etc/security/limits.conf <<'EOF'
-*                soft    nofile          100000
-*                hard    nofile          100000
+*                soft    nofile          500000
+*                hard    nofile          500000
+*                soft    nproc          262144
+*                hard    nproc          262144
+EOF
+
+cat >> /etc/security/limits.conf <<'EOF'
+# From Jenkins workers
+fs.file-max=500000
+vm.max_map_count=262144
+kernel.pid_max=4194303
+fs.inotify.max_user_watches=8192
+
+# From bazel
+kernel.sched_min_granularity_ns=10000000
+kernel.sched_wakeup_granularity_ns=15000000
+vm.dirty_ratio=40
+kernel.sched_migration_cost_ns=5000000
+kernel.sched_autogroup_enabled=0
 EOF
 
 mkdir -p /etc/systemd/system/buildkite-agent.service.d
@@ -215,16 +232,6 @@ gcloud auth configure-docker --quiet
   cd -
 }
 
-# Bootstrap cache
-su - buildkite-agent <<'EOF'
-git clone /var/lib/gitmirrors/https---github-com-elastic-kibana-git /var/lib/buildkite-agent/.kibana
-cd /var/lib/buildkite-agent/.kibana
-git checkout buildkite-wip
-HOME=/var/lib/buildkite-agent bash .buildkite/scripts/packer_cache.sh
-
-cd -
-EOF
-
 mv /tmp/bk-startup.sh /opt/bk-startup.sh
 chown root:root /opt/bk-startup.sh
 chmod +x /opt/bk-startup.sh
@@ -243,6 +250,17 @@ systemctl disable buildkite-agent
 
 apt-get clean
 rm -rf /var/lib/apt/lists/*
+
+# Bootstrap cache
+su - buildkite-agent <<'EOF'
+git clone /var/lib/gitmirrors/https---github-com-elastic-kibana-git /var/lib/buildkite-agent/.kibana
+cd /var/lib/buildkite-agent/.kibana
+git checkout master
+HOME=/var/lib/buildkite-agent bash .buildkite/scripts/packer_cache.sh
+
+cd -
+EOF
+
 sync
 
 sleep 3
