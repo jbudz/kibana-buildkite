@@ -15,11 +15,7 @@ resource "buildkite_pipeline" "hourly" {
   branch_configuration = join(" ", local.hourly_branches)
 
   provider_settings {
-    build_branches      = true
-    build_tags          = false
-    build_pull_requests = false
-
-    trigger_mode = "code"
+    trigger_mode = "none"
   }
 }
 
