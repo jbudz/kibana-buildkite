@@ -10,7 +10,7 @@
     "diskSizeGb": 75,
     "overprovision": 0,
     "minimumAgents": 0,
-    "maximumAgents": 225,
+    "maximumAgents": 500,
     "gracefulStopAfterMins": 360,
     "hardStopAfterMins": 540,
     "idleTimeoutMins": 10,
@@ -30,7 +30,8 @@
         "queue": "c2-16",
         "name": "kb-c2-16",
         "machineType": "c2-standard-16",
-        "localSsds": 2
+        "localSsds": 2,
+        "maximumAgents": 200
       },
       {
         "queue": "c2-8",
