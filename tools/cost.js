@@ -1,18 +1,19 @@
-const Buildkite = require('./lib/buildkite');
+const Buildkite = require("./lib/buildkite");
 
-const { buildNumber, pipelineSlug } = require('./lib/getBuildFromArgs')();
+const { buildNumber, pipelineSlug } = require("./lib/getBuildFromArgs")();
 
 // https://cloud.google.com/products/calculator
 const COSTS_PER_MINUTE = {
   default: 0.00002698 * 60,
-  'ci-group': 0.031 / 4.35,
-  'ci-group-4d': 0.0028,
-  'ci-group-6': 0.0045,
+  "ci-group": 0.031 / 4.35,
+  "ci-group-4d": 0.0028,
+  "ci-group-6": 0.0045,
   jest: 0.00002698 * 60,
-  'n2-2': 0.00002698 * 60,
-  'c2-16': 0.00023192 * 60,
-  'c2-8': 0.00011596 * 60,
-  'c2-4': 0.00005798 * 60,
+  "n2-2": 0.00002698 * 60,
+  "n2-4": 0.00002698 * 60 * 2,
+  "c2-16": 0.00023192 * 60,
+  "c2-8": 0.00011596 * 60,
+  "c2-4": 0.00005798 * 60,
 };
 
 const JENKINS_COST = (0.242 / 4.35) * 140 + 0.78;
@@ -23,12 +24,17 @@ const JENKINS_COST = (0.242 / 4.35) * 140 + 0.78;
   const build = await buildkite.getBuild(pipelineSlug, buildNumber);
 
   const steps = build.jobs
-    .filter((job) => job.type === 'script')
+    .filter((job) => job.type === "script")
     .map((job) => {
-      const durationMin = ((job.finished_at ? new Date(job.finished_at) : new Date()).getTime() - new Date(job.started_at).getTime()) / 60000;
+      const durationMin =
+        ((job.finished_at ? new Date(job.finished_at) : new Date()).getTime() -
+          new Date(job.started_at).getTime()) /
+        60000;
 
       return {
-        agent: job.agent_query_rules?.length ? job.agent_query_rules[0].replace('queue=', '') : 'default',
+        agent: job.agent_query_rules?.length
+          ? job.agent_query_rules[0].replace("queue=", "")
+          : "default",
         duration: durationMin,
       };
     });
@@ -47,8 +53,11 @@ const JENKINS_COST = (0.242 / 4.35) * 140 + 0.78;
   }
 
   console.log(perAgent);
-  console.log('Total', totalCost.toString().substr(0, 4));
-  console.log('Jenkins', JENKINS_COST.toString().substr(0, 4));
+  console.log("Total", totalCost.toString().substr(0, 4));
+  console.log("Jenkins", JENKINS_COST.toString().substr(0, 4));
 
-  console.log('Change', ((totalCost * 100) / JENKINS_COST - 100).toString().substr(0, 5) + '%');
+  console.log(
+    "Change",
+    ((totalCost * 100) / JENKINS_COST - 100).toString().substr(0, 5) + "%"
+  );
 })();
