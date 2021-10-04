@@ -23,6 +23,6 @@ const { buildNumber, pipelineSlug } = require('./lib/getBuildFromArgs')();
   });
 
   for (const step of steps) {
-    console.log(`${step.duration.toString().substr(0, 4)} ${step.name} ${step.parallel_group_index !== null ? '#' + (step.parallel_group_index + 1) : ''}`);
+    console.log(`${step.duration.toString().substr(0, 4)} ${step.name} ${step.parallel_group_index !== null ? '#' + (step.parallel_group_index + 1) : ''} - ${step.web_url}`);
   }
 })();
