@@ -17,13 +17,13 @@ Just some quick and dirty tools
 
 ### Build Cost
 
-`node cost <pipeline_slug> <build_number>`
+`node cost <buildkite_build_url>`
 
 Shows the cost of a build, using the hard-coded costs in `cost.js`
 
 ### Slow Jobs
 
-`node slow <pipeline_slug> <build_number>`
+`node slow <buildkite_build_url>`
 
 Sorts the jobs/steps of a build by duration, and outputs the durations as well
 
