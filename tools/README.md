@@ -40,3 +40,11 @@ Summarizes step failures across the latest `count` builds, and displays up to 3 
 (Open a step in a Buildkite build so that the URL contains the build ID in the hash)
 
 Downloads all of the JUnit artifacts for a given build step, and shows a bunch of sorted output based on execution times.
+
+### Capacity
+
+`node capacity <buildkite_build_url> [number_to_calculate]`
+
+Tells you approximately how many resources you need to run `number_to_calculate` instances of the given build. Should only pass a finished build to this. Useful for planning GCP quotas.
+
+Averages the resource usages across the duration of a build. E.g. a 1 hour step that uses 16 CPUs in a 2 hour build will contribute 8 CPUs required.
