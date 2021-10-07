@@ -1,12 +1,14 @@
-const getBuildPartsFromArgs = () => {
-  const url = process.argv[2];
+const getBuildPartsFromArgs = (argNumber = 2) => {
+  const url = process.argv[argNumber];
 
   if (!url) {
     console.error(`Usage: node ${__filename} <buildkite-url>`);
     process.exit(1);
   }
 
-  const match = url.match(/https:\/\/buildkite.com\/elastic\/(.*)\/builds\/(\d+)(#([0-9a-z\-]+))?/);
+  const match = url.match(
+    /https:\/\/buildkite.com\/elastic\/(.*)\/builds\/(\d+)(#([0-9a-z\-]+))?/
+  );
 
   if (!match) {
     throw new Error(`Could not parse buildkite url: ${url}`);

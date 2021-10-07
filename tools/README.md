@@ -48,3 +48,9 @@ Downloads all of the JUnit artifacts for a given build step, and shows a bunch o
 Tells you approximately how many resources you need to run `number_to_calculate` instances of the given build. Should only pass a finished build to this. Useful for planning GCP quotas.
 
 Averages the resource usages across the duration of a build. E.g. a 1 hour step that uses 16 CPUs in a 2 hour build will contribute 8 CPUs required.
+
+### Compare
+
+`node compare <buildkite_build_url> <buildkite_build_url>`
+
+Compares two Buildkite builds, and outputs the steps whose execution times differed by more than 2 minutes. Useful for seeing why one build may have been faster or slower than another.
