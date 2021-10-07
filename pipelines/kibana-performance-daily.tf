@@ -1,17 +1,17 @@
 resource "buildkite_pipeline" "performance_daily" {
   name        = "kibana / performance daily"
   description = "Runs performance tests daily"
-  repository  = "https://github.com/elastic/kibana.git"
+  repository  = "https://github.com/suchcodemuchwow/kibana"
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
     SLACK_NOTIFICATIONS_ENABLED: 'false'
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/pipelines/performance_daily.yml
+      command: buildkite-agent pipeline upload .buildkite/pipelines/performance/nightly.yml
   EOT
 
-  default_branch       = "implement/performance-daily-job"
+  default_branch       = "06102021-feat-perf-test-nightly"
   branch_configuration = join(" ", local.current_dev_branches)
 }
 

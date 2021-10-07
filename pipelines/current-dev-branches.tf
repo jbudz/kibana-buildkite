@@ -1,5 +1,5 @@
 locals {
-  current_dev_branches = ["master", "7.x", "7.15", "7.14"]
-  hourly_branches = ["master", "7.x"]
-  daily_branches = setsubtract(local.current_dev_branches, local.hourly_branches)
+  current_dev_branches = ["master", "7.x", "7.15"]
+  hourly_branches      = ["master", "7.x"]
+  daily_branches       = setsubtract(local.current_dev_branches, local.hourly_branches)
 }
