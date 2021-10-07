@@ -67,25 +67,25 @@
         "queue": "ci-group",
         "name": "kb-cigroup",
         "machineType": "n2-standard-8",
-        "diskSizeGb": 256
+        "localSsds": 1
       },
       {
         "queue": "ci-group-4",
         "name": "kb-cigroup-4",
         "machineType": "n2-standard-4",
-        "diskSizeGb": 128
+        "localSsds": 1
       },
       {
         "queue": "ci-group-4d",
         "name": "kb-cigroup-4d",
         "machineType": "n2d-standard-4",
-        "diskSizeGb": 128
+        "localSsds": 1
       },
       {
         "queue": "ci-group-6",
         "name": "kb-cigroup-6",
         "machineType": "n2-custom-6-16384",
-        "diskSizeGb": 128
+        "localSsds": 1
       },
       {
         "queue": "packer",
