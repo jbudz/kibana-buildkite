@@ -22,7 +22,7 @@ apt-get install --yes \
   buildkite-agent \
   ruby \
   ruby-dev \
-  rpm \
+  rpm
 
   gem install fpm -v 1.13.1
 
