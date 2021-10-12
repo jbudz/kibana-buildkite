@@ -19,7 +19,12 @@ apt-get install --yes \
   curl \
   gnupg-agent \
   software-properties-common \
-  buildkite-agent
+  buildkite-agent \
+  ruby \
+  ruby-dev \
+  rpm \
+
+  gem install fpm -v 1.13.1
 
 ### Get rid of Ubuntu's snapd stuff and install the Google Cloud SDK the traditional way.
 {
