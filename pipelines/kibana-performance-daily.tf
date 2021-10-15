@@ -4,8 +4,8 @@ resource "buildkite_pipeline" "performance_daily" {
   repository  = "https://github.com/suchcodemuchwow/kibana"
   steps       = <<-EOT
   env:
-    SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
-    SLACK_NOTIFICATIONS_ENABLED: 'false'
+    SLACK_NOTIFICATIONS_CHANNEL: '#kibana-performance-alerts'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/performance/nightly.yml
