@@ -88,6 +88,11 @@
         "localSsds": 1
       },
       {
+        "queue": "jest-2-10g",
+        "name": "jest-2-10g",
+        "machineType": "n2d-custom-2-10240"
+      },
+      {
         "queue": "packer",
         "name": "kb-packer",
         "serviceAccount": "buildkite-packer-agent@elastic-kibana-ci.iam.gserviceaccount.com",
@@ -98,6 +103,13 @@
         "queue": "terraform",
         "name": "kb-terraform",
         "serviceAccount": "buildkite-terraform@elastic-kibana-ci.iam.gserviceaccount.com",
+        "maximumAgents": 10,
+        "machineType": "e2-small"
+      },
+      {
+        "queue": "ci-stats-service-ci",
+        "name": "kb-ci-stats-service-ci",
+        "serviceAccount": "kibana-ci-stats@elastic-kibana-184716.iam.gserviceaccount.com",
         "maximumAgents": 10,
         "machineType": "e2-small"
       }
