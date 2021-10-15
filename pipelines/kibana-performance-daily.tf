@@ -6,6 +6,7 @@ resource "buildkite_pipeline" "performance_daily" {
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-performance-alerts'
     SLACK_NOTIFICATIONS_ENABLED: 'true'
+    SLACK_NOTIFICATIONS_ON_SUCCESS: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/performance/nightly.yml
