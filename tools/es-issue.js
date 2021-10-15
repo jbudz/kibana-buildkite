@@ -34,7 +34,7 @@ if (!pipelineSlug) {
 
   const [classname, filename] = testFailure.classname.split(".", 2);
 
-  const title = `Failing ES Promotion: ${testFailure.name}`;
+  const title = `Failing ES Promotion: ${testFailure.classname} - ${testFailure.name}`;
   const body = `
     **${classname}**
     **${filename.replace("·", ".")}**
