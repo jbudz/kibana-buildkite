@@ -54,3 +54,9 @@ Averages the resource usages across the duration of a build. E.g. a 1 hour step 
 `node compare <buildkite_build_url> <buildkite_build_url>`
 
 Compares two Buildkite builds, and outputs the steps whose execution times differed by more than 2 minutes. Useful for seeing why one build may have been faster or slower than another.
+
+### ES Issue
+
+`node es-issue <buildkite_job_url>`
+
+Grabs the test failure from the linked job, and creates a failed ES promotion issue for it.
