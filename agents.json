@@ -107,8 +107,8 @@
         "machineType": "e2-small"
       },
       {
-        "queue": "ci-stats-service-ci",
-        "name": "kb-ci-stats-service-ci",
+        "queue": "cistats",
+        "name": "kb-cistats",
         "serviceAccount": "kibana-ci-stats-ci-worker@elastic-kibana-ci.iam.gserviceaccount.com",
         "maximumAgents": 10,
         "machineType": "e2-small"
