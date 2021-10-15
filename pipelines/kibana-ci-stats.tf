@@ -5,7 +5,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-trigger" {
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
-    SLACK_NOTIFICATIONS_ENABLED: 'true'
+    SLACK_NOTIFICATIONS_ENABLED: 'false'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
