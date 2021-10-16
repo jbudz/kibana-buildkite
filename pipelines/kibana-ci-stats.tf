@@ -37,7 +37,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
   EOT
 
-  default_branch       = "master"
+  default_branch       = "main"
   branch_configuration = ""
 
   cancel_intermediate_builds = true
