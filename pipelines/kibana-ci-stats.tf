@@ -26,7 +26,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-trigger" {
 resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
   name        = "kibana-ci-stats / pull request"
   description = "Runs manually for pull requests"
-  repository  = "https://github.com/elastic/ci-stats.git"
+  repository  = "https://github.com/elastic/kibana-ci-stats.git"
   steps       = <<-EOT
   env:
     PR_COMMENTS_ENABLED: 'true'
