@@ -1,8 +1,8 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const { BuildkiteClient } = require('kibana-buildkite-library');
+const { BuildkiteClient } = require("kibana-buildkite-library");
 
-const { buildNumber, pipelineSlug } = require('./lib/getBuildFromArgs')();
+const { buildNumber, pipelineSlug } = require("./lib/getBuildFromArgs")();
 
 const client = new BuildkiteClient();
 

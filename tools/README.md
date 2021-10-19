@@ -60,3 +60,17 @@ Compares two Buildkite builds, and outputs the steps whose execution times diffe
 `node es-issue <buildkite_job_url>`
 
 Grabs the test failure from the linked job, and creates a failed ES promotion issue for it.
+
+### Logs
+
+`node logs <buildkite_job_url>`
+
+Grab the full logs from the Buildkite job, renders them into HTML using the same renderer as Buildkite, and opens them in a browser. Includes a basic search bar.
+
+Requires golang and [terminal-to-html](https://github.com/buildkite/terminal-to-html)
+
+```bash
+brew install go
+GO111MODULE=on go get github.com/buildkite/terminal-to-html/v3/cmd/terminal-to-html
+echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> ~/.bash_profile # Or .zshrc, or similar
+```
