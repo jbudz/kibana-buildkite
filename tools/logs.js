@@ -31,7 +31,10 @@ const parseMetadata = (metadata) => {
 
   const html = readFileSync("out/logs.html")
     .toString()
-    .replace(/<\?bk.+?\?>/gms, '</div><div class="line">');
+    .replace(/<\?bk t="([0-9]+)"\?>/gms, (str, ts) => {
+      const date = new Date(parseInt(ts)).toISOString();
+      return `</div><div class="line"><span class="ts">${date}</span>`;
+    });
 
   const template = readFileSync("logs.html").toString();
   writeFileSync("./out/logs.html", template.replace("$OUTPUT", html));
