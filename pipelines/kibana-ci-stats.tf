@@ -1,6 +1,6 @@
-resource "buildkite_pipeline" "kibana-ci-stats-trigger" {
-  name        = "kibana-ci-stats / trigger"
-  description = "Triggers pipelines on commit based on the changed files in the commit"
+resource "buildkite_pipeline" "kibana-ci-stats-main" {
+  name        = "kibana-ci-stats / main"
+  description = "Runs CI on each commit to kibana-ci-stats repo"
   repository  = "https://github.com/elastic/kibana-ci-stats.git"
   steps       = <<-EOT
   env:
@@ -26,7 +26,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-trigger" {
 resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
   name        = "kibana-ci-stats / pull request"
   description = "Runs manually for pull requests"
-  repository  = "https://github.com/elastic/ci-stats.git"
+  repository  = "https://github.com/elastic/kibana-ci-stats.git"
   steps       = <<-EOT
   env:
     PR_COMMENTS_ENABLED: 'true'
@@ -37,7 +37,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
   EOT
 
-  default_branch       = "master"
+  default_branch       = "main"
   branch_configuration = ""
 
   cancel_intermediate_builds = true
@@ -47,17 +47,17 @@ resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
     build_tags          = false
     build_pull_requests = true
 
-    trigger_mode = "none"
+    trigger_mode = "code"
 
     publish_commit_status = false
   }
 }
 
-resource "github_repository_webhook" "kibana-ci-stats-trigger" {
+resource "github_repository_webhook" "kibana-ci-stats-main" {
   repository = "kibana-ci-stats"
 
   configuration {
-    url          = buildkite_pipeline.kibana-ci-stats-trigger.webhook_url
+    url          = buildkite_pipeline.kibana-ci-stats-main.webhook_url
     content_type = "json"
     insecure_ssl = false
   }
@@ -65,4 +65,18 @@ resource "github_repository_webhook" "kibana-ci-stats-trigger" {
   active = true
 
   events = ["push"]
+}
+
+resource "github_repository_webhook" "kibana-ci-stats-pull-request" {
+  repository = "kibana-ci-stats"
+
+  configuration {
+    url          = buildkite_pipeline.kibana-ci-stats-pull-request.webhook_url
+    content_type = "json"
+    insecure_ssl = false
+  }
+
+  active = true
+
+  events = ["push", "pull_request"]
 }
