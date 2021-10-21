@@ -207,7 +207,7 @@ git-fetch-flags="-v"
 #tags-from-gcp-labels=true
 #tags-from-host=true
 timestamp-lines=true
-debug=true
+#debug=true
 EOF
 
 mkdir -p /etc/buildkite-agent/hooks
