@@ -31,7 +31,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
   env:
     PR_COMMENTS_ENABLED: 'true'
     GITHUB_COMMIT_STATUS_ENABLED: 'true'
-    GITHUB_COMMIT_STATUS_CONTEXT: 'kibana-ci'
+    GITHUB_COMMIT_STATUS_CONTEXT: 'ci'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
@@ -47,7 +47,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
     build_tags          = false
     build_pull_requests = true
 
-    trigger_mode = "code"
+    trigger_mode = "none"
 
     publish_commit_status = false
   }
@@ -65,18 +65,4 @@ resource "github_repository_webhook" "kibana-ci-stats-main" {
   active = true
 
   events = ["push"]
-}
-
-resource "github_repository_webhook" "kibana-ci-stats-pull-request" {
-  repository = "kibana-ci-stats"
-
-  configuration {
-    url          = buildkite_pipeline.kibana-ci-stats-pull-request.webhook_url
-    content_type = "json"
-    insecure_ssl = false
-  }
-
-  active = true
-
-  events = ["push", "pull_request"]
 }
