@@ -30,8 +30,8 @@ resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
   steps       = <<-EOT
   env:
     PR_COMMENTS_ENABLED: 'true'
-    GITHUB_COMMIT_STATUS_ENABLED: 'true'
-    GITHUB_COMMIT_STATUS_CONTEXT: 'ci'
+    GITHUB_BUILD_COMMIT_STATUS_ENABLED: 'true'
+    GITHUB_BUILD_COMMIT_STATUS_CONTEXT: 'ci'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
