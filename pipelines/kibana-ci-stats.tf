@@ -6,6 +6,8 @@ resource "buildkite_pipeline" "kibana-ci-stats-main" {
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
     SLACK_NOTIFICATIONS_ENABLED: 'false'
+    GITHUB_BUILD_COMMIT_STATUS_ENABLED: 'true'
+    GITHUB_BUILD_COMMIT_STATUS_CONTEXT: 'ci'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
