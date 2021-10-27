@@ -111,6 +111,7 @@
         "name": "kb-cistats",
         "serviceAccount": "kibana-ci-stats-ci-worker@elastic-kibana-ci.iam.gserviceaccount.com",
         "maximumAgents": 10,
+        "idleTimeoutMins": 20,
         "machineType": "e2-small"
       },
       {
