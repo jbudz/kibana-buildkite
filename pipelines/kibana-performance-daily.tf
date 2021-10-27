@@ -1,6 +1,6 @@
 resource "buildkite_pipeline" "performance_daily" {
-  name        = "kibana / performance daily"
-  description = "Runs performance tests daily"
+  name        = "kibana / performance nightly"
+  description = "Runs performance tests nightly"
   repository  = "https://github.com/suchcodemuchwow/kibana"
   steps       = <<-EOT
   env:
@@ -12,7 +12,7 @@ resource "buildkite_pipeline" "performance_daily" {
       command: buildkite-agent pipeline upload .buildkite/pipelines/performance/nightly.yml
   EOT
 
-  default_branch       = "06102021-feat-perf-test-nightly"
+  default_branch       = "271021-fix-concurrency-performance-nightly-job"
   branch_configuration = join(" ", local.current_dev_branches)
 }
 
