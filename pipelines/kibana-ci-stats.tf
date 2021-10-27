@@ -15,6 +15,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-main" {
 
   default_branch       = "main"
   branch_configuration = "main"
+  cancel_intermediate_builds = true
 
   provider_settings {
     build_branches      = true
