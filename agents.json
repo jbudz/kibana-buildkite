@@ -20,11 +20,11 @@
       {
         "queue": "default",
         "name": "kb-default",
+        "machineType": "n2-standard-2",
         "minimumAgents": 2,
         "maximumAgents": 100,
         "idleTimeoutMins": 60,
-        "machineType": "n2-standard-2",
-        "exitAfterOneJob": false
+        "exitAfterOneJob": false,
       },
       {
         "queue": "c2-16",
@@ -110,9 +110,10 @@
         "queue": "cistats",
         "name": "kb-cistats",
         "serviceAccount": "kibana-ci-stats-ci-worker@elastic-kibana-ci.iam.gserviceaccount.com",
+        "machineType": "e2-small",
         "maximumAgents": 10,
         "idleTimeoutMins": 20,
-        "machineType": "e2-small"
+        "exitAfterOneJob": false
       },
       {
         "queue": "ci-group-4-idle",
