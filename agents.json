@@ -24,7 +24,7 @@
         "minimumAgents": 2,
         "maximumAgents": 100,
         "idleTimeoutMins": 60,
-        "exitAfterOneJob": false,
+        "exitAfterOneJob": false
       },
       {
         "queue": "c2-16",
