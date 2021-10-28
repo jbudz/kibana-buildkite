@@ -110,7 +110,7 @@
         "queue": "cistats",
         "name": "kb-cistats",
         "serviceAccount": "kibana-ci-stats-ci-worker@elastic-kibana-ci.iam.gserviceaccount.com",
-        "machineType": "e2-small",
+        "machineType": "n2-standard-4",
         "maximumAgents": 10,
         "idleTimeoutMins": 20,
         "exitAfterOneJob": false
