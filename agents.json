@@ -10,7 +10,7 @@
     "diskSizeGb": 75,
     "overprovision": 0,
     "minimumAgents": 0,
-    "maximumAgents": 750,
+    "maximumAgents": 850,
     "gracefulStopAfterMins": 360,
     "hardStopAfterMins": 540,
     "idleTimeoutMins": 10,
