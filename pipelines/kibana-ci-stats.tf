@@ -5,9 +5,10 @@ resource "buildkite_pipeline" "kibana-ci-stats-main" {
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
-    SLACK_NOTIFICATIONS_ENABLED: 'false'
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
     GITHUB_BUILD_COMMIT_STATUS_ENABLED: 'true'
     GITHUB_BUILD_COMMIT_STATUS_CONTEXT: 'ci'
+    GITHUB_STEP_COMMIT_STATUS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
@@ -35,6 +36,7 @@ resource "buildkite_pipeline" "kibana-ci-stats-pull-request" {
     PR_COMMENTS_ENABLED: 'true'
     GITHUB_BUILD_COMMIT_STATUS_ENABLED: 'true'
     GITHUB_BUILD_COMMIT_STATUS_CONTEXT: 'ci'
+    GITHUB_STEP_COMMIT_STATUS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipeline.yml
