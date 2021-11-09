@@ -7,6 +7,7 @@ resource "buildkite_pipeline" "pull-request" {
     PR_COMMENTS_ENABLED: 'true'
     GITHUB_BUILD_COMMIT_STATUS_ENABLED: 'true'
     GITHUB_BUILD_COMMIT_STATUS_CONTEXT: 'kibana-ci'
+    GITHUB_STEP_COMMIT_STATUS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: .buildkite/scripts/pipelines/pull_request/pipeline.sh
