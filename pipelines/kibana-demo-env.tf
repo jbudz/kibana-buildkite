@@ -26,7 +26,7 @@ resource "buildkite_pipeline" "demo-env" {
 }
 
 resource "buildkite_pipeline_schedule" "demo-env-daily" {
-  for_each = toset(local.current_dev_branches)
+  for_each = setsubtract(local.current_dev_branches, ["7.15"])
 
   pipeline_id = buildkite_pipeline.demo-env.id
   label       = "Daily build"
