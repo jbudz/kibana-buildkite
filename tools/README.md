@@ -8,7 +8,7 @@ Just some quick and dirty tools
    1. https://buildkite.com/user/api-access-tokens
    2. New API Access Token
    3. Organization Access: Elastic
-   4. Scopes: Read Builds, Read Pipelines
+   4. Scopes: Read Builds, Read Pipelines, Read Artifacts, Read Build Logs
    5. Create
 2. `cp .env.template .env`
 3. Edit `.env` and insert `BUILDKITE_TOKEN`
