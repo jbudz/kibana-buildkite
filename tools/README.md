@@ -74,3 +74,15 @@ brew install go
 GO111MODULE=on go get github.com/buildkite/terminal-to-html/v3/cmd/terminal-to-html
 echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> ~/.bash_profile # Or .zshrc, or similar
 ```
+
+### All Logs
+
+`node all-logs <buildkite_build_url> [optional regex]`
+
+Grabs the logs for all steps in a given build, and writes them to separate files. If a regex is provided, it will filter the jobs to only include those whose name matches the regex. Regex is case-insensitive.
+
+e.g.
+
+```bash
+node all-logs https://buildkite.com/elastic/kibana-hourly/builds/3094 "default ci group"
+```
