@@ -1,0 +1,7 @@
+{
+  "host": "https://api.elastic-cloud.com",
+  "region": "gcp-us-central1",
+  "output": "json",
+  "timeout": 30000000000,
+  "insecure": true
+}
