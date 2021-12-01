@@ -34,7 +34,7 @@ build {
     source      = "ecctl.json"
   }
 
-provisioner "file" {
+  provisioner "file" {
     destination = "/tmp/elastic-agent.yml"
     source      = "elastic-agent.yml"
   }
