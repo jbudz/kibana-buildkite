@@ -1,6 +1,6 @@
 resource "buildkite_pipeline" "flaky_test_suite_runner" {
   name        = "kibana / flaky-test-suite-runner"
-  description = "Flaky Test Suite Runner"
+  description = "New Build, fill in your PR number, Create Build, then watch the next page"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
   steps:

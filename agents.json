@@ -10,9 +10,9 @@
     "diskSizeGb": 75,
     "overprovision": 0,
     "minimumAgents": 0,
-    "maximumAgents": 500,
-    "gracefulStopAfterMins": 360,
-    "hardStopAfterMins": 540,
+    "maximumAgents": 1250,
+    "gracefulStopAfterMins": 1260,
+    "hardStopAfterMins": 1440,
     "idleTimeoutMins": 10,
     "exitAfterOneJob": true,
 
@@ -20,11 +20,18 @@
       {
         "queue": "default",
         "name": "kb-default",
+        "machineType": "n2-standard-2",
         "minimumAgents": 2,
         "maximumAgents": 100,
         "idleTimeoutMins": 60,
-        "machineType": "n2-standard-2",
         "exitAfterOneJob": false
+      },
+      {
+        "queue": "c2-60",
+        "name": "kb-c2-60",
+        "machineType": "c2-standard-60",
+        "localSsds": 8,
+        "maximumAgents": 20
       },
       {
         "queue": "c2-16",
@@ -105,6 +112,39 @@
         "serviceAccount": "buildkite-terraform@elastic-kibana-ci.iam.gserviceaccount.com",
         "maximumAgents": 10,
         "machineType": "e2-small"
+      },
+      {
+        "queue": "cistats",
+        "name": "kb-cistats",
+        "serviceAccount": "kibana-ci-stats-ci-worker@elastic-kibana-ci.iam.gserviceaccount.com",
+        "machineType": "n2-standard-4",
+        "maximumAgents": 10,
+        "idleTimeoutMins": 20,
+        "exitAfterOneJob": false
+      },
+      {
+        "queue": "ci-group-4-idle",
+        "name": "kb-cigroup-4-idle",
+        "machineType": "n2-standard-4",
+        "localSsds": 1,
+        "idleTimeoutMins": 10,
+        "exitAfterOneJob": false
+      },
+      {
+        "queue": "ci-group-4d-idle",
+        "name": "kb-cigroup-4d-idle",
+        "machineType": "n2d-standard-4",
+        "localSsds": 1,
+        "idleTimeoutMins": 10,
+        "exitAfterOneJob": false
+      },
+      {
+        "queue": "ci-group-6-idle",
+        "name": "kb-cigroup-6-idle",
+        "machineType": "n2-custom-6-16384",
+        "localSsds": 1,
+        "idleTimeoutMins": 10,
+        "exitAfterOneJob": false
       }
     ]
   }

@@ -6,12 +6,14 @@ resource "buildkite_pipeline" "on-merge" {
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
     SLACK_NOTIFICATIONS_ENABLED: 'true'
+    GITHUB_BUILD_COMMIT_STATUS_ENABLED: 'true'
+    GITHUB_COMMIT_STATUS_CONTEXT: 'buildkite/on-merge'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/on_merge.yml
   EOT
 
-  default_branch       = "master"
+  default_branch       = "main"
   branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {

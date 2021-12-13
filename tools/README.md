@@ -8,7 +8,7 @@ Just some quick and dirty tools
    1. https://buildkite.com/user/api-access-tokens
    2. New API Access Token
    3. Organization Access: Elastic
-   4. Scopes: Read Builds, Read Pipelines
+   4. Scopes: Read Builds, Read Pipelines, Read Artifacts, Read Build Logs
    5. Create
 2. `cp .env.template .env`
 3. Edit `.env` and insert `BUILDKITE_TOKEN`
@@ -54,3 +54,35 @@ Averages the resource usages across the duration of a build. E.g. a 1 hour step 
 `node compare <buildkite_build_url> <buildkite_build_url>`
 
 Compares two Buildkite builds, and outputs the steps whose execution times differed by more than 2 minutes. Useful for seeing why one build may have been faster or slower than another.
+
+### ES Issue
+
+`node es-issue <buildkite_job_url>`
+
+Grabs the test failure from the linked job, and creates a failed ES promotion issue for it.
+
+### Logs
+
+`node logs <buildkite_job_url>`
+
+Grab the full logs from the Buildkite job, renders them into HTML using the same renderer as Buildkite, and opens them in a browser. Includes a basic search bar.
+
+Requires golang and [terminal-to-html](https://github.com/buildkite/terminal-to-html)
+
+```bash
+brew install go
+GO111MODULE=on go get github.com/buildkite/terminal-to-html/v3/cmd/terminal-to-html
+echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> ~/.bash_profile # Or .zshrc, or similar
+```
+
+### All Logs
+
+`node all-logs <buildkite_build_url> [optional regex]`
+
+Grabs the logs for all steps in a given build, and writes them to separate files. If a regex is provided, it will filter the jobs to only include those whose name matches the regex. Regex is case-insensitive.
+
+e.g.
+
+```bash
+node all-logs https://buildkite.com/elastic/kibana-hourly/builds/3094 "default ci group"
+```
