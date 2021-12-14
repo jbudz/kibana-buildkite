@@ -134,6 +134,17 @@ LATEST_VAULT_RELEASE=$(curl -s https://api.github.com/repos/hashicorp/vault/tags
   && chmod +x vault \
   && mv vault /usr/local/bin/vault
 
+mkdir ecctl \
+  && cd ecctl \
+  && curl -L https://download.elastic.co/downloads/ecctl/1.6.0/ecctl_1.6.0_linux_amd64.tar.gz -o ecctl.tar.gz \
+  && tar xzf ecctl.tar.gz \
+  && mv ecctl /usr/local/bin/ecctl \
+  && cd - \
+  && rm -rf ecctl
+
+mkdir -p "$AGENT_HOME/.ecctl"
+mv /tmp/ecctl.json "$AGENT_HOME/.ecctl/config.json"
+
 usermod -a -G docker "$AGENT_USER"
 
 mkdir -p "$AGENT_HOME/.java"
