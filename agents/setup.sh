@@ -19,7 +19,15 @@ apt-get install --yes \
   curl \
   gnupg-agent \
   software-properties-common \
-  buildkite-agent
+  buildkite-agent \
+  virtualbox
+
+### Install Vagrant
+{
+  curl -O https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
+  apt install ./vagrant_2.2.19_x86_64.deb
+  rm -f vagrant_2.2.19_x86_64.deb
+}
 
 ### Get rid of Ubuntu's snapd stuff and install the Google Cloud SDK the traditional way.
 {
