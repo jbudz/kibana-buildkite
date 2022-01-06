@@ -20,7 +20,12 @@ apt-get install --yes \
   gnupg-agent \
   software-properties-common \
   buildkite-agent \
-  virtualbox
+  virtualbox \
+  ruby \
+  ruby-dev \
+  rpm
+
+gem install fpm -v 1.13.1
 
 ### Install Vagrant
 {
