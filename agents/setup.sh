@@ -34,6 +34,12 @@ gem install fpm -v 1.13.1
   rm -f vagrant_2.2.19_x86_64.deb
 }
 
+### Install ansible
+{
+  add-apt-repository --yes --update ppa:ansible/ansible
+  apt-get install ansible --yes
+}
+
 ### Get rid of Ubuntu's snapd stuff and install the Google Cloud SDK the traditional way.
 {
   apt-get -y remove --purge snapd
