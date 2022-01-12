@@ -4,6 +4,7 @@ resource "buildkite_pipeline" "es_forward_7" {
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
   env:
+    SLACK_NOTIFICATIONS_ENABLED: 'true'
     ES_SNAPSHOT_MANIFEST: 'https://storage.googleapis.com/kibana-ci-es-snapshots-daily/8.0.0/manifest-latest-verified.json'
   steps:
     - label: ":pipeline: Pipeline upload"
