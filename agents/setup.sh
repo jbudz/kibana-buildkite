@@ -40,6 +40,18 @@ gem install fpm -v 1.13.1
   apt-get install ansible --yes
 }
 
+### Install libvirt / minikube
+{
+  apt-get install -y --no-install-recommends qemu-system libvirt-clients libvirt-daemon-system
+  apt-get install -y dnsmasq
+
+  usermod -aG libvirt "$AGENT_USER"
+
+  su - buildkite-agent -c "minikube config set driver kvm2"
+  # Packer doesn't currently support nested virtualization on these ephemeral VMs, this can be enabled once they do
+  # su - buildkite-agent -c "minikube config set driver kvm2; minikube start; minikube stop"
+}
+
 ### Get rid of Ubuntu's snapd stuff and install the Google Cloud SDK the traditional way.
 {
   apt-get -y remove --purge snapd
