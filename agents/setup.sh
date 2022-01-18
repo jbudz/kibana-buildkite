@@ -47,6 +47,9 @@ gem install fpm -v 1.13.1
 
   usermod -aG libvirt "$AGENT_USER"
 
+  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+  dpkg -i minikube_latest_amd64.deb
+  rm -f minikube_latest_amd64.deb
   su - buildkite-agent -c "minikube config set driver kvm2"
   # Packer doesn't currently support nested virtualization on these ephemeral VMs, this can be enabled once they do
   # su - buildkite-agent -c "minikube config set driver kvm2; minikube start; minikube stop"
