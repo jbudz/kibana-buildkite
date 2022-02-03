@@ -145,6 +145,20 @@
         "localSsds": 1,
         "idleTimeoutMins": 10,
         "exitAfterOneJob": false
+      },
+      {
+        "queue": "n2-4-virt",
+        "name": "kb-n2-4-virt",
+        "machineType": "n2-standard-4",
+        "localSsds": 1,
+        "nestedVirtualization": true
+      },
+      {
+        "queue": "n2-16-virt",
+        "name": "kb-n2-16-virt",
+        "machineType": "n2-standard-16",
+        "localSsds": 2,
+        "nestedVirtualization": true
       }
     ]
   }

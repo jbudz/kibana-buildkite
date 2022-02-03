@@ -40,6 +40,10 @@ build {
   }
 
   provisioner "shell" {
+    inline = ["cloud-init status --wait"]
+  }
+
+  provisioner "shell" {
     execute_command  = "sudo sh -c '{{ .Vars }} {{ .Path }}'"
     script           = "setup.sh"
   }

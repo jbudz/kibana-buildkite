@@ -20,11 +20,40 @@ apt-get install --yes \
   gnupg-agent \
   software-properties-common \
   buildkite-agent \
+  virtualbox \
   ruby \
   ruby-dev \
   rpm
 
-  gem install fpm -v 1.13.1
+gem install fpm -v 1.13.1
+
+### Install Vagrant
+{
+  curl -O https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
+  apt install ./vagrant_2.2.19_x86_64.deb
+  rm -f vagrant_2.2.19_x86_64.deb
+}
+
+### Install ansible
+{
+  add-apt-repository --yes --update ppa:ansible/ansible
+  apt-get install ansible --yes
+}
+
+### Install libvirt / minikube
+{
+  apt-get install -y --no-install-recommends qemu-system libvirt-clients libvirt-daemon-system
+  apt-get install -y dnsmasq
+
+  usermod -aG libvirt "$AGENT_USER"
+
+  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+  dpkg -i minikube_latest_amd64.deb
+  rm -f minikube_latest_amd64.deb
+  su - buildkite-agent -c "minikube config set driver kvm2"
+  # Packer doesn't currently support nested virtualization on these ephemeral VMs, this can be enabled once they do
+  # su - buildkite-agent -c "minikube config set driver kvm2; minikube start; minikube stop"
+}
 
 ### Get rid of Ubuntu's snapd stuff and install the Google Cloud SDK the traditional way.
 {

@@ -6,6 +6,7 @@ resource "buildkite_pipeline" "hourly" {
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-operations-alerts'
     SLACK_NOTIFICATIONS_ENABLED: 'true'
+    REPORT_FAILED_TESTS_TO_GITHUB: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/hourly.yml
