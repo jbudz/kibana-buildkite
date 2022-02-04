@@ -4,7 +4,6 @@ resource "buildkite_pipeline" "purge_cloud_deployments" {
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
   env:
-    GITHUB_COMMIT_STATUS_ENABLED: 'true'
     SLACK_NOTIFICATIONS_ENABLED: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
