@@ -159,6 +159,13 @@
         "machineType": "n2-standard-16",
         "localSsds": 2,
         "nestedVirtualization": true
+      },
+      {
+        "queue": "n2-4-spot",
+        "name": "kb-n2-4-spot",
+        "machineType": "n2-standard-4",
+        "localSsds": 1,
+        "spot": true
       }
     ]
   }
