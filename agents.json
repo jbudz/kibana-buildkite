@@ -123,28 +123,10 @@
         "exitAfterOneJob": false
       },
       {
-        "queue": "ci-group-4-idle",
-        "name": "kb-cigroup-4-idle",
+        "queue": "agent-image-test",
+        "name": "kb-agent-image-test",
         "machineType": "n2-standard-4",
-        "localSsds": 1,
-        "idleTimeoutMins": 10,
-        "exitAfterOneJob": false
-      },
-      {
-        "queue": "ci-group-4d-idle",
-        "name": "kb-cigroup-4d-idle",
-        "machineType": "n2d-standard-4",
-        "localSsds": 1,
-        "idleTimeoutMins": 10,
-        "exitAfterOneJob": false
-      },
-      {
-        "queue": "ci-group-6-idle",
-        "name": "kb-cigroup-6-idle",
-        "machineType": "n2-custom-6-16384",
-        "localSsds": 1,
-        "idleTimeoutMins": 10,
-        "exitAfterOneJob": false
+        "imageFamily": "kb-ubuntu-test"
       },
       {
         "queue": "n2-4-virt",
