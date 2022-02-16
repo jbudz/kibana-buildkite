@@ -62,7 +62,8 @@
         "queue": "n2-4",
         "name": "kb-n2-4",
         "machineType": "n2-standard-4",
-        "localSsds": 1
+        "localSsds": 1,
+        "maximumAgents": 2000
       },
       {
         "queue": "jest",
