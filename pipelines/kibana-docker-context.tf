@@ -25,7 +25,7 @@ resource "buildkite_pipeline" "docker_context" {
 resource "buildkite_pipeline_schedule" "docker_context_daily" {
   for_each = toset(local.hourly_branches)
 
-  pipeline_id = buildkite_pipeline.package_testing.id
+  pipeline_id = buildkite_pipeline.docker_context.id
   label       = "Daily build"
   cronline    = "0 7 * * * America/New_York"
   branch      = each.value
