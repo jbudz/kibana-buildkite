@@ -22,9 +22,9 @@ resource "buildkite_pipeline" "purge_cloud_deployments" {
   }
 }
 
-resource "buildkite_pipeline_schedule" "purge_cloud_deployments_daily" {
+resource "buildkite_pipeline_schedule" "purge_cloud_deployments_hourly" {
   pipeline_id = buildkite_pipeline.purge_cloud_deployments.id
-  label       = "Daily purge"
-  cronline    = "0 7 * * * America/New_York"
+  label       = "Hourly purge"
+  cronline    = "0 * * * * America/New_York"
   branch      = "main"
 }
