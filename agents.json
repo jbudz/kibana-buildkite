@@ -27,7 +27,7 @@
         "exitAfterOneJob": false
       },
       {
-        "queue": "kb-default",
+        "queue": "kibana-default",
         "name": "kibana-default",
         "machineType": "n2-standard-2",
         "minimumAgents": 2,
