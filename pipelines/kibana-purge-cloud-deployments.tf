@@ -8,6 +8,8 @@ resource "buildkite_pipeline" "purge_cloud_deployments" {
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/purge_cloud_deployments.yml
+      agents:
+        queue: kibana-default
   EOT
 
   default_branch       = "main"
