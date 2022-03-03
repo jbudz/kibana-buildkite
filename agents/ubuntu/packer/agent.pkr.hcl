@@ -9,7 +9,7 @@ source "googlecompute" "bk_dev" {
   image_description   = "${local.image_id}"
   image_family        = "kb-ubuntu"
   image_name          = "${local.image_id}"
-  machine_type        = "n1-standard-8"
+  machine_type        = "n2-standard-8"
   project_id          = "elastic-kibana-ci"
   source_image_family = "ubuntu-2004-lts"
   ssh_username        = "packer"
@@ -41,6 +41,13 @@ build {
 
   provisioner "shell" {
     inline = ["cloud-init status --wait"]
+  }
+
+  provisioner "ansible" {
+    playbook_file = "../ansible/packer.yml"
+    // user = "root"
+    // extra_arguments = [ "-vvv" ]
+    use_proxy = false
   }
 
   provisioner "shell" {
