@@ -3,6 +3,7 @@
     name: fpm
     version: 1.13.1
     state: present
+    user_install: no
 
 - name: Disable automatic upgrades
   lineinfile:
