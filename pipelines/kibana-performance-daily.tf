@@ -16,6 +16,11 @@ resource "buildkite_pipeline" "performance_daily" {
 
   default_branch       = "2021-11-25-synthetics-perf-test-login-and-home-page"
   branch_configuration = join(" ", local.current_dev_branches)
+
+  team {
+    slug = "everyone"
+    access_level = "MANAGE_BUILD_AND_READ"
+  }
 }
 
 # resource "buildkite_pipeline_schedule" "performance-daily-ci" {
