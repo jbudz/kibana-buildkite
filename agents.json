@@ -18,19 +18,10 @@
 
     "agents": [
       {
-        "queue": "default",
-        "name": "kb-default",
-        "machineType": "n2-standard-2",
-        "minimumAgents": 2,
-        "maximumAgents": 100,
-        "idleTimeoutMins": 60,
-        "exitAfterOneJob": false
-      },
-      {
         "queue": "kibana-default",
         "name": "kibana-default",
         "machineType": "n2-standard-2",
-        "minimumAgents": 2,
+        "minimumAgents": 3,
         "maximumAgents": 100,
         "idleTimeoutMins": 60,
         "exitAfterOneJob": false
