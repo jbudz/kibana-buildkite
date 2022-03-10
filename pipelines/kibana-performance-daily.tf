@@ -10,6 +10,8 @@ resource "buildkite_pipeline" "single_user_performance" {
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/performance/daily.yml
+      agents:
+        queue: kibana-default
   EOT
 
   default_branch       = "main"
