@@ -19,3 +19,4 @@ Tools / Automation / Etc
 - [Pull Request configuration](https://github.com/elastic/kibana/blob/master/.buildkite/pull_requests.json)
 - [Agent configurations](agents.json)
 - [terraform for CI infra](https://github.com/elastic/kibana-operations/tree/main/infra/elastic-kibana-ci)
+- [Custom monitoring collectors](https://github.com/elastic/kibana-operations/tree/main/monitoring) e.g. for Buildkite and Github
