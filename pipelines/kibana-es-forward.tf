@@ -5,7 +5,7 @@ resource "buildkite_pipeline" "es_forward_7" {
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_ENABLED: 'true'
-    ES_SNAPSHOT_MANIFEST: 'https://storage.googleapis.com/kibana-ci-es-snapshots-daily/8.0.0/manifest-latest-verified.json'
+    ES_SNAPSHOT_MANIFEST: 'https://storage.googleapis.com/kibana-ci-es-snapshots-daily/8.0.2/manifest-latest-verified.json'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/hourly.yml
@@ -44,7 +44,7 @@ resource "buildkite_pipeline" "es_forward_7_81" {
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_ENABLED: 'true'
-    ES_SNAPSHOT_MANIFEST: 'https://storage.googleapis.com/kibana-ci-es-snapshots-daily/8.1.0/manifest-latest-verified.json'
+    ES_SNAPSHOT_MANIFEST: 'https://storage.googleapis.com/kibana-ci-es-snapshots-daily/8.1.1/manifest-latest-verified.json'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/hourly.yml
