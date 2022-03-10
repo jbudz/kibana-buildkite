@@ -14,6 +14,11 @@ resource "buildkite_pipeline" "single_user_performance" {
 
   default_branch       = "main"
   branch_configuration = "main"
+  
+  team {
+    slug = "everyone"
+    access_level = "MANAGE_BUILD_AND_READ"
+  }
 }
 
 resource "buildkite_pipeline_schedule" "single_user_performance_daily" {
