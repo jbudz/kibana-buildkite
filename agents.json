@@ -151,6 +151,14 @@
         "spot": true
       },
       {
+        "queue": "n2-4-spot-regions",
+        "name": "kb-n2-4-spot-regions",
+        "machineType": "n2-standard-4",
+        "localSsds": 1,
+        "spot": true,
+        "zones": ["northamerica-northeast2-a", "europe-west2-a", "southamerica-east1-a", "asia-south2-a"]
+      },
+      {
         "queue": "n2d-2",
         "name": "kb-n2d-2",
         "machineType": "n2d-standard-2",
