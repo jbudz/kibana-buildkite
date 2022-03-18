@@ -11,7 +11,7 @@ Tools / Automation / Etc
 
 - [buildkite-agent-manager](https://github.com/elastic/buildkite-agent-manager) - for managing/auto-scaling agents in GCP
 - [buildkite-pr-bot](https://github.com/elastic/buildkite-pr-bot) - for triggering PRs in Buildkite
-- [kibana-buildkite-build-bot](https://github.com/elastic/kibana-buildkite-build-bot/) - Slack notifications and possibly PR comments in the future
+- [kibana-buildkite-build-bot](https://github.com/elastic/kibana-buildkite-build-bot/) - Slack notifications, PR comments, commit statuses
 - [kibana-buildkite-library](https://github.com/elastic/kibana-buildkite-library) - Library used in pipelines and in several other tools above, has a client for interacting with Buildkite as well as types for the API
 
 ## Locations of other Buildkite things
