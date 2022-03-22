@@ -147,7 +147,6 @@
         "queue": "n2-4-spot",
         "name": "kb-n2-4-spot",
         "machineType": "n2-standard-4",
-        "localSsds": 1,
         "spot": true,
         "zones": [
           "northamerica-northeast2-a",
