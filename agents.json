@@ -62,7 +62,21 @@
         "queue": "n2-4",
         "name": "kb-n2-4",
         "machineType": "n2-standard-4",
-        "localSsds": 1,
+        "spot": true,
+        "zones": [
+          "northamerica-northeast2-a",
+          "northamerica-northeast2-b",
+          "northamerica-northeast2-c",
+          "europe-west2-a",
+          "europe-west2-b",
+          "europe-west2-c",
+          "southamerica-east1-a",
+          "southamerica-east1-b",
+          "southamerica-east1-c",
+          "asia-south2-a",
+          "asia-south2-b",
+          "asia-south2-c"
+        ],
         "maximumAgents": 2000
       },
       {
