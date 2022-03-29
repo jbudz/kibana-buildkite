@@ -77,3 +77,19 @@
     content: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/buildkite-vault-credentials:secret_id') }}"
     mode: "0600"
     owner: "buildkite-agent"
+
+- name: Log into docker.elastic.co
+  docker_login:
+    registry: docker.elastic.co
+    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username') }}"
+    password: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:password') }}"
+
+- name: Cache the release-manager CLI
+  docker_image:
+    name: docker.elastic.co/infra/release-manager:latest
+
+- name: Log out of docker.elastic.co
+  docker_login:
+    registry: docker.elastic.co
+    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username') }}"
+    state: absent
