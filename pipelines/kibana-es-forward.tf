@@ -31,7 +31,7 @@ resource "buildkite_pipeline" "es_forward_7_82" {
 }
 
 resource "buildkite_pipeline_schedule" "es_forward_7_82" {
-  pipeline_id = buildkite_pipeline.es_forward_7.id
+  pipeline_id = buildkite_pipeline.es_forward_7_82.id
   label       = "Daily build"
   cronline    = "0 9 * * * America/New_York"
   branch      = "7.17"
