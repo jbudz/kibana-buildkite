@@ -1,5 +1,5 @@
 resource "buildkite_pipeline" "kibana_artifacts_snapshot" {
-  name        = "kibana / snapshot artifacts"
+  name        = "kibana / artifacts snapshot"
   description = "Kibana snapshot artifact builds"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
@@ -30,7 +30,7 @@ resource "buildkite_pipeline" "kibana_artifacts_snapshot" {
 }
 
 resource "buildkite_pipeline" "kibana_artifacts_release" {
-  name        = "kibana / release artifacts"
+  name        = "kibana / artifacts release"
   description = "Kibana release artifact builds"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
