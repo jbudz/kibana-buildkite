@@ -81,8 +81,8 @@
 - name: Log into docker.elastic.co
   docker_login:
     registry: docker.elastic.co
-    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username') }}"
-    password: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:password') }}"
+    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username', token_validate=false) }}"
+    password: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:password', token_validate=false) }}"
 
 - name: Cache the release-manager CLI
   docker_image:
@@ -91,5 +91,5 @@
 - name: Log out of docker.elastic.co
   docker_login:
     registry: docker.elastic.co
-    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username') }}"
+    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username', token_validate=false) }}"
     state: absent
