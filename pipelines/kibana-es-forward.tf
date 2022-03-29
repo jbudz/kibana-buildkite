@@ -1,6 +1,6 @@
 resource "buildkite_pipeline" "es_forward_7_82" {
   name        = "kibana / 7.latest ES 8.2 forward compatibility"
-  description = "Runs full CI daily using 7.latest kibana and 8.0 ES"
+  description = "Runs full CI daily using 7.latest kibana and 8.2 ES"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
   env:
