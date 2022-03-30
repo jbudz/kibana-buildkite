@@ -78,18 +78,25 @@
     mode: "0600"
     owner: "buildkite-agent"
 
+# This is required for the docker tasks below
+# Yes, it's required on the _target_
+- name: Install docker python package
+  pip:
+    name: docker
+
 - name: Log into docker.elastic.co
   docker_login:
     registry: docker.elastic.co
-    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username', token_validate=false) }}"
-    password: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:password', token_validate=false) }}"
+    username: "{{ container_registry_username }}"
+    password: "{{ container_registry_password }}"
 
 - name: Cache the release-manager CLI
   docker_image:
     name: docker.elastic.co/infra/release-manager:latest
+    source: pull
 
 - name: Log out of docker.elastic.co
   docker_login:
     registry: docker.elastic.co
-    username: "{{ lookup('hashi_vault', 'secret=secret/kibana-issues/dev/container-registry:username', token_validate=false) }}"
+    username: "{{ container_registry_username }}"
     state: absent

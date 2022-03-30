@@ -111,6 +111,8 @@
       - openjdk-16-jdk
       - openjdk-17-jdk
       - qemu-user-static
+      - python3
+      - python3-pip
       # For Chrome/FF below:
       - xvfb
       - gconf-service
