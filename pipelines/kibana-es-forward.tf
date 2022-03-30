@@ -8,7 +8,7 @@ resource "buildkite_pipeline" "es_forward_7_82" {
     ES_SNAPSHOT_MANIFEST: 'https://storage.googleapis.com/kibana-ci-es-snapshots-daily/8.2.0/manifest-latest-verified.json'
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/pipelines/hourly.yml
+      command: buildkite-agent pipeline upload .buildkite/pipelines/es_forward.yml
       agents:
         queue: kibana-default
   EOT
@@ -47,7 +47,7 @@ resource "buildkite_pipeline" "es_forward_7_81" {
     ES_SNAPSHOT_MANIFEST: 'https://storage.googleapis.com/kibana-ci-es-snapshots-daily/8.1.2/manifest-latest-verified.json'
   steps:
     - label: ":pipeline: Pipeline upload"
-      command: buildkite-agent pipeline upload .buildkite/pipelines/hourly.yml
+      command: buildkite-agent pipeline upload .buildkite/pipelines/es_forward.yml
       agents:
         queue: kibana-default
   EOT
