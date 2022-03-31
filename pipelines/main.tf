@@ -17,12 +17,12 @@ terraform {
   required_providers {
     buildkite = {
       source  = "buildkite/buildkite"
-      version = "0.6.0"
+      version = "0.5.0" # As of writing, 0.6.0 is the latest, but is missing mac arm support
     }
 
     github = {
       source  = "integrations/github"
-      version = "4.8.0"
+      version = "4.23.0"
     }
 
   }
