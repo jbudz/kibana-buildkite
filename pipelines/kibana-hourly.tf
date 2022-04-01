@@ -17,7 +17,7 @@ resource "buildkite_pipeline" "hourly" {
   EOT
 
   default_branch       = "main"
-  branch_configuration = join(" ", local.hourly_branches)
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     trigger_mode = "none"

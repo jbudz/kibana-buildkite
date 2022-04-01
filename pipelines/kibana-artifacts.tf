@@ -13,7 +13,7 @@ resource "buildkite_pipeline" "kibana_artifacts_snapshot" {
   EOT
 
   default_branch       = "main"
-  branch_configuration = join(" ", local.hourly_branches)
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     build_branches      = false
@@ -45,7 +45,7 @@ resource "buildkite_pipeline" "kibana_artifacts_release" {
   EOT
 
   default_branch       = "main"
-  branch_configuration = join(" ", local.hourly_branches)
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     build_branches      = false

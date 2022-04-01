@@ -14,7 +14,7 @@ resource "buildkite_pipeline" "package_testing" {
   EOT
 
   default_branch       = "main"
-  branch_configuration = join(" ", local.hourly_branches)
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     build_branches      = false
@@ -31,7 +31,7 @@ resource "buildkite_pipeline" "package_testing" {
 }
 
 resource "buildkite_pipeline_schedule" "package_testing_daily" {
-  for_each = toset(local.hourly_branches)
+  for_each = toset(local.current_dev_branches)
 
   pipeline_id = buildkite_pipeline.package_testing.id
   label       = "Daily build"

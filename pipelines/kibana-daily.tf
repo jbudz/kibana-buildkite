@@ -1,3 +1,4 @@
+# Note: this pipeline is no longer used, but still exists to keep the historical data
 resource "buildkite_pipeline" "daily" {
   name        = "kibana / daily"
   description = "Runs full CI daily and on merge"
@@ -17,7 +18,7 @@ resource "buildkite_pipeline" "daily" {
   default_branch       = ""
 
   // See: https://github.com/buildkite/terraform-provider-buildkite/issues/184
-  branch_configuration = "not-a-real-branch ${join(" ", local.daily_branches)}"
+  branch_configuration = "not-a-real-branch"
 
   provider_settings {
     build_branches      = true
@@ -31,27 +32,4 @@ resource "buildkite_pipeline" "daily" {
     slug = "everyone"
     access_level = "MANAGE_BUILD_AND_READ"
   }
-}
-
-resource "buildkite_pipeline_schedule" "daily-ci" {
-  for_each = local.daily_branches
-
-  pipeline_id = buildkite_pipeline.daily.id
-  label       = "Daily build"
-  cronline    = "0 9 * * * America/New_York"
-  branch      = each.value
-}
-
-resource "github_repository_webhook" "daily" {
-  repository = "kibana"
-
-  configuration {
-    url          = buildkite_pipeline.daily.webhook_url
-    content_type = "json"
-    insecure_ssl = false
-  }
-
-  active = true
-
-  events = ["push"]
 }

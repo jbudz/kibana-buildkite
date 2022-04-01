@@ -13,7 +13,7 @@ resource "buildkite_pipeline" "docker_context" {
   EOT
 
   default_branch       = "main"
-  branch_configuration = join(" ", local.hourly_branches)
+  branch_configuration = join(" ", local.current_dev_branches)
 
   provider_settings {
     build_branches      = false
@@ -30,7 +30,7 @@ resource "buildkite_pipeline" "docker_context" {
 }
 
 resource "buildkite_pipeline_schedule" "docker_context_daily" {
-  for_each = toset(local.hourly_branches)
+  for_each = toset(local.current_dev_branches)
 
   pipeline_id = buildkite_pipeline.docker_context.id
   label       = "Daily build"

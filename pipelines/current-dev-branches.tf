@@ -1,5 +1,11 @@
+data "github_repository_file" "kibana_versions" {
+  repository = "kibana"
+  branch     = "main"
+  file       = "versions.json"
+}
+
 locals {
-  current_dev_branches = ["main", "8.2", "8.1", "7.17"]
-  hourly_branches      = ["main", "8.2", "8.1", "7.17"]
-  daily_branches       = setsubtract(local.current_dev_branches, local.hourly_branches)
+  kibana_versions      = jsondecode(data.github_repository_file.kibana_versions.content)["versions"]
+  kibana_branches      = [for k, v in local.kibana_versions : v["branch"]]
+  current_dev_branches = local.kibana_branches
 }
