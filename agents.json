@@ -124,12 +124,6 @@
         "exitAfterOneJob": false
       },
       {
-        "queue": "agent-image-test",
-        "name": "kb-agent-image-test",
-        "machineType": "n2-standard-4",
-        "imageFamily": "kb-ubuntu-test"
-      },
-      {
         "queue": "n2-4-virt",
         "name": "kb-n2-4-virt",
         "machineType": "n2-standard-4",
@@ -194,14 +188,6 @@
         "name": "kb-n2d-4",
         "machineType": "n2d-standard-4",
         "localSsds": 1
-      },
-      {
-        "queue": "n2-4-dev",
-        "name": "kb-n2-4-dev",
-        "machineType": "n2-standard-4",
-        "localSsds": 1,
-        "maximumAgents": 2000,
-        "imageFamily": "kb-ubuntu-test"
       }
     ]
   }
