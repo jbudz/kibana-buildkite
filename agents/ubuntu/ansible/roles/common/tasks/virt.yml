@@ -9,6 +9,7 @@
     vagrant box add elastic/debian-9-x86_64
     vagrant box add elastic/centos-7-x86_64
     vagrant box add elastic/ubuntu-18.04-x86_64
+  when: not is_static
 
 - name: Install minikube
   apt:
