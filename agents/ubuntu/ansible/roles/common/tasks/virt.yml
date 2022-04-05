@@ -2,15 +2,6 @@
   apt:
     deb: https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.deb
 
-- name: Cache Vagrant boxes used for package testing
-  args:
-    executable: /bin/bash
-  shell: |
-    vagrant box add elastic/debian-9-x86_64
-    vagrant box add elastic/centos-7-x86_64
-    vagrant box add elastic/ubuntu-18.04-x86_64
-  when: not is_static
-
 - name: Install minikube
   apt:
     deb: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
