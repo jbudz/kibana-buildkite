@@ -6,7 +6,6 @@ resource "buildkite_pipeline" "single_user_performance" {
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-performance-alerts'
     SLACK_NOTIFICATIONS_ENABLED: 'true'
-    SLACK_NOTIFICATIONS_ON_SUCCESS: 'true'
   steps:
     - label: ":pipeline: Pipeline upload"
       command: buildkite-agent pipeline upload .buildkite/pipelines/performance/daily.yml
@@ -16,7 +15,7 @@ resource "buildkite_pipeline" "single_user_performance" {
 
   default_branch       = "main"
   branch_configuration = "main"
-  
+
   team {
     slug = "everyone"
     access_level = "MANAGE_BUILD_AND_READ"
