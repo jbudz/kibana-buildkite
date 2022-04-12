@@ -21,6 +21,10 @@ resource "buildkite_pipeline" "fleet_packages" {
     slug = "everyone"
     access_level = "MANAGE_BUILD_AND_READ"
   }
+
+  provider_settings {
+    publish_commit_status = false
+  }
 }
 
 resource "buildkite_pipeline_schedule" "fleet_packages_daily" {
