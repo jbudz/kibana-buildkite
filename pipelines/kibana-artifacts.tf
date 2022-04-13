@@ -13,7 +13,7 @@ resource "buildkite_pipeline" "kibana_artifacts_snapshot" {
   EOT
 
   default_branch       = "main"
-  branch_configuration = join(" ", local.current_dev_branches)
+  branch_configuration = join(" ", setsubtract(local.current_dev_branches, ["8.1"]))
 
   provider_settings {
     build_branches      = false
@@ -38,9 +38,9 @@ resource "buildkite_pipeline_schedule" "kibana_artifacts_snapshot_daily" {
   branch      = each.value
 }
 
-resource "buildkite_pipeline" "kibana_artifacts_release" {
-  name        = "kibana / artifacts release"
-  description = "Kibana release artifact builds"
+resource "buildkite_pipeline" "kibana_artifacts_staging" {
+  name        = "kibana / artifacts staging"
+  description = "Kibana staging artifact builds"
   repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
   env:
@@ -54,7 +54,7 @@ resource "buildkite_pipeline" "kibana_artifacts_release" {
   EOT
 
   default_branch       = "main"
-  branch_configuration = join(" ", local.current_dev_branches)
+  branch_configuration = join(" ", setsubtract(local.current_dev_branches, ["8.1"]))
 
   provider_settings {
     build_branches      = false
@@ -70,10 +70,10 @@ resource "buildkite_pipeline" "kibana_artifacts_release" {
   }
 }
 
-resource "buildkite_pipeline_schedule" "kibana_artifacts_release_daily" {
+resource "buildkite_pipeline_schedule" "kibana_artifacts_staging_daily" {
   for_each = toset(local.current_dev_branches)
 
-  pipeline_id = buildkite_pipeline.kibana_artifacts_release.id
+  pipeline_id = buildkite_pipeline.kibana_artifacts_staging.id
   label       = "Daily build"
   cronline    = "0 7 * * * America/New_York"
   branch      = each.value
