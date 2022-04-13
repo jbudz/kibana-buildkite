@@ -86,3 +86,17 @@ e.g.
 ```bash
 node all-logs https://buildkite.com/elastic/kibana-hourly/builds/3094 "default ci group"
 ```
+
+### Slow Logs
+
+`node slow-logs <buildkite_build_or_job_url>`
+
+Grabs the logs for all of the steps in a given build, or just the given job, depending on the URL passed in.
+
+It will process the logs for each step, breaking the steps down into smaller steps based on content of the logs, and assigning durations to the chunks. It will then sort everything by duration, and show only chunks that are > 3 minutes. Useful for getting an overview of the slowest parts of a build.
+
+e.g.
+
+```bash
+node slow-logs https://buildkite.com/elastic/kibana-hourly/builds/3094
+```
