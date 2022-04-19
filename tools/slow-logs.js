@@ -26,7 +26,15 @@ const parseLine = (line) => {
     metadata.timestamp = new Date(parseInt(metadata.t));
   }
 
-  const levelMatchers = [/^(---)|(~~~) /, /^ └-: /, /^   └-: /, /^     └-: /];
+  const levelMatchers = [
+    /^(---)|(~~~) /,
+    /^ └-: /,
+    /^   └-: /,
+    /^     └-: /,
+    /^       └-: /,
+    /^         └-: /,
+    /^           └-: /,
+  ];
   for (const i in levelMatchers) {
     if (levelMatchers[i].test(logLine)) {
       parsed.level = Number(i);
