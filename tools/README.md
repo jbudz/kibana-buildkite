@@ -23,9 +23,9 @@ Shows the cost of a build, using the hard-coded costs in `cost.js`
 
 ### Slow Jobs
 
-`node slow <buildkite_build_url>`
+`node slow <buildkite_build_url> [regex]`
 
-Sorts the jobs/steps of a build by duration, and outputs the durations as well
+Sorts the jobs/steps of a build by duration, and outputs the durations as well. Optional regex to filter the steps, e.g. 'Default CI Group'
 
 ### Failures
 
