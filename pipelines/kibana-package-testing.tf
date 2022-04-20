@@ -29,12 +29,3 @@ resource "buildkite_pipeline" "package_testing" {
     access_level = "MANAGE_BUILD_AND_READ"
   }
 }
-
-resource "buildkite_pipeline_schedule" "package_testing_daily" {
-  for_each = toset(local.current_dev_branches)
-
-  pipeline_id = buildkite_pipeline.package_testing.id
-  label       = "Daily build"
-  cronline    = "0 7 * * * America/New_York"
-  branch      = each.value
-}
