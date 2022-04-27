@@ -37,7 +37,7 @@
         "queue": "c2-16",
         "name": "kb-c2-16",
         "machineType": "c2-standard-16",
-        "localSsds": 2,
+        "buildPath": "/dev/shm/builds",
         "maximumAgents": 200
       },
       {
