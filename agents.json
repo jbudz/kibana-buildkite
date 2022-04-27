@@ -66,6 +66,12 @@
         "maximumAgents": 2000
       },
       {
+        "queue": "n2-8",
+        "name": "kb-n2-8",
+        "machineType": "n2-standard-8",
+        "buildPath": "/dev/shm/builds"
+      },
+      {
         "queue": "t2d-16",
         "name": "kb-t2d-16",
         "machineType": "t2d-standard-16",
