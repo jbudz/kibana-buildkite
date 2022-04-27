@@ -66,6 +66,12 @@
         "maximumAgents": 2000
       },
       {
+        "queue": "n2-20-16g",
+        "name": "kb-n2-20-16g",
+        "machineType": "n2-custom-20-16384",
+        "localSsds": 2
+      },
+      {
         "queue": "jest",
         "name": "kb-jest",
         "machineType": "n2-standard-2",
