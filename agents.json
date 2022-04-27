@@ -69,7 +69,7 @@
         "queue": "t2d-16",
         "name": "kb-t2d-16",
         "machineType": "t2d-standard-16",
-        "diskSizeGb": 250,
+        "diskSizeGb": 250
       },
       {
         "queue": "jest",
