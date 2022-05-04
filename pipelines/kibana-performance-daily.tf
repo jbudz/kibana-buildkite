@@ -1,7 +1,7 @@
 resource "buildkite_pipeline" "single_user_performance" {
   name        = "kibana / single-user-performance"
   description = "Runs single user performance tests for kibana"
-  repository  = "https://github.com/elastic/kibana"
+  repository  = "https://github.com/elastic/kibana.git"
   steps       = <<-EOT
   env:
     SLACK_NOTIFICATIONS_CHANNEL: '#kibana-performance-alerts'
