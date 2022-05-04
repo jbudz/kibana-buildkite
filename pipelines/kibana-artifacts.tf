@@ -30,7 +30,7 @@ resource "buildkite_pipeline" "kibana_artifacts_snapshot" {
 }
 
 resource "buildkite_pipeline_schedule" "kibana_artifacts_snapshot_daily" {
-  for_each = setsubtract(local.current_dev_branches, ["8.1"])
+  for_each = toset(local.current_dev_branches)
 
   pipeline_id = buildkite_pipeline.kibana_artifacts_snapshot.id
   label       = "Daily build"
@@ -71,7 +71,7 @@ resource "buildkite_pipeline" "kibana_artifacts_staging" {
 }
 
 resource "buildkite_pipeline_schedule" "kibana_artifacts_staging_daily" {
-  for_each = setsubtract(local.current_dev_branches, ["8.1"])
+  for_each = toset(local.current_dev_branches)
 
   pipeline_id = buildkite_pipeline.kibana_artifacts_staging.id
   label       = "Daily build"
