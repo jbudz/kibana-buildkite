@@ -102,6 +102,7 @@
       - git
       - jq
       - rsync
+      - zstd
       - openjdk-11-jre-headless
       - unzip
       - build-essential
