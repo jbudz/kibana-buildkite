@@ -254,7 +254,8 @@
       {
         "queue": "cache-test",
         "name": "kb-cache-test",
-        "machineType": "n2-standard-4"
+        "machineType": "n2-standard-4",
+        "imageFamily": "kb-ubuntu-cached"
       },
       {
         "queue": "n2d-4",
