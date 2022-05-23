@@ -252,6 +252,11 @@
         "localSsds": 1
       },
       {
+        "queue": "cache-test",
+        "name": "kb-cache-test",
+        "machineType": "n2-standard-4"
+      },
+      {
         "queue": "n2d-4",
         "name": "kb-n2d-4",
         "machineType": "n2d-standard-4",
