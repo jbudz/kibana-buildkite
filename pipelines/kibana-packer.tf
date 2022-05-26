@@ -17,11 +17,7 @@ resource "buildkite_pipeline" "agent_packer" {
   branch_configuration = "main"
 
   provider_settings {
-    build_branches      = false
-    build_tags          = false
-    build_pull_requests = false
-
-    trigger_mode = "code"
+    trigger_mode = "none"
   }
 
   team {
@@ -51,15 +47,12 @@ resource "buildkite_pipeline" "agent_packer_cache" {
         queue: kibana-default
   EOT
 
-  default_branch       = "main"
-  branch_configuration = "main"
+  default_branch             = "main"
+  branch_configuration       = "main"
+  cancel_intermediate_builds = true
 
   provider_settings {
-    build_branches      = false
-    build_tags          = false
-    build_pull_requests = false
-
-    trigger_mode = "code"
+    trigger_mode = "none"
   }
 
   team {
