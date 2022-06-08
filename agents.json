@@ -254,10 +254,12 @@
         "localSsds": 1
       },
       {
-        "queue": "cache-test",
-        "name": "kb-cache-test",
+        "queue": "debug-reboot",
+        "name": "kb-debug-reboot",
         "machineType": "n2-standard-4",
-        "imageFamily": "kb-ubuntu-cached"
+        "image": "kb-ubuntu-20220608112917",
+        "idleTimeoutMins": 360,
+        "exitAfterOneJob": false
       },
       {
         "queue": "n2d-4",
