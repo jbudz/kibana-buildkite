@@ -26,12 +26,12 @@ resource "buildkite_pipeline" "agent_packer" {
   }
 }
 
-resource "buildkite_pipeline_schedule" "agent_packer_daily" {
-  pipeline_id = buildkite_pipeline.agent_packer.id
-  label       = "Daily build"
-  cronline    = "0 7 * * * America/New_York"
-  branch      = buildkite_pipeline.agent_packer.default_branch
-}
+# resource "buildkite_pipeline_schedule" "agent_packer_daily" {
+#   pipeline_id = buildkite_pipeline.agent_packer.id
+#   label       = "Daily build"
+#   cronline    = "0 7 * * * America/New_York"
+#   branch      = buildkite_pipeline.agent_packer.default_branch
+# }
 
 resource "buildkite_pipeline" "agent_packer_cache" {
   name        = "kibana / agent / packer / cache"
