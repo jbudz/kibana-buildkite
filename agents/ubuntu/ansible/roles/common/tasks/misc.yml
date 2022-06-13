@@ -95,6 +95,11 @@
     name: docker.elastic.co/infra/release-manager:latest
     source: pull
 
+- name: Cache the EPM registry
+  docker_image:
+    name: docker.elastic.co/package-registry/distribution:snapshot
+    source: pull
+
 - name: Log out of docker.elastic.co
   docker_login:
     registry: docker.elastic.co
