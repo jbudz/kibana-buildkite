@@ -95,6 +95,7 @@
       - ansible
       - dnsmasq
       - google-cloud-sdk
+      - google-cloud-sdk-gke-gcloud-auth-plugin
       - gh
       - docker-ce
       - docker-ce-cli
