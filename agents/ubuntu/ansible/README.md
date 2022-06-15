@@ -34,7 +34,7 @@ One of the ansible plugins currently requires this: `export OBJC_DISABLE_INITIAL
 # New Instances
 
 1. Add the new instance to `hosts`
-2. Provision the instance `ansible-playbook -u <your_username> -l <hostname_from_hosts_file> provision.yml`
+2. Provision the instance `ansible-playbook -u <your_username> -l <hostname_from_hosts_file> playbook.yml`
    - This will fully set up the instance, and connect it to Buildkite
 
 # Test locally using Docker
