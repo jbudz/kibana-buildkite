@@ -64,7 +64,7 @@ cat > /etc/systemd/system/buildkite-agent.service.d/10-agent-poweroff.conf <<'EO
 [Service]
 Restart=no
 PermissionsStartOnly=true
-ExecStopPost=/bin/systemctl poweroff
+ExecStopPost=/bin/systemctl poweroff -f
 EOF
 
 cat > /etc/systemd/system/buildkite-agent.service.d/10-disable-tasks-accounting.conf <<'EOF'
