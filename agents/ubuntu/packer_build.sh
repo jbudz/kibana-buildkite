@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 cd packer
 
 echo --- Building agent base image
