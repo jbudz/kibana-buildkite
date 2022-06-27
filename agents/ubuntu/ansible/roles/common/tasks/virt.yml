@@ -7,9 +7,8 @@
   args:
     executable: /bin/bash
   shell: |
-    vagrant box add elastic/debian-9-x86_64 --no-tty
-    vagrant box add elastic/centos-7-x86_64 --no-tty
-    vagrant box add elastic/ubuntu-18.04-x86_64 --no-tty
+    vagrant box add almalinux/9 --no-tty
+    vagrant box add ubuntu/jammy64 --no-tty
   when: not is_static
   ignore_errors: true
 
