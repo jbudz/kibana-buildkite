@@ -169,7 +169,7 @@
         "machineType": "n2-standard-4",
         "spot": true,
         "disableExternalIp": false,
-        "maximumAgents": 2000,
+        "maximumAgents": 4000,
         "zones": [
           "northamerica-northeast2-a",
           "northamerica-northeast2-b",
