@@ -161,7 +161,12 @@
       - qemu-system
       - libvirt-clients
       - libvirt-daemon-system
-      - google-chrome-stable
+      # - google-chrome-stable # TODO re-enable after Chrome 104 is released. 103 has bugs
       - firefox
     state: latest
+    install_recommends: no
+
+- name: Install Chrome 102
+  apt:
+    deb: http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_102.0.5005.115-1_amd64.deb
     install_recommends: no
