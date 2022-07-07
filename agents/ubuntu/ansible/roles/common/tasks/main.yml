@@ -9,6 +9,14 @@
     name: "{{ buildkite_agent_name }}"
   when: is_static and not is_docker
 
+- name: Install curl
+  ansible.builtin.get_url:
+    url: https://github.com/moparisthebest/static-curl/releases/download/v7.83.1/curl-amd64
+    dest: /usr/bin/curl
+    mode: "0755"
+    force: yes
+  become: true
+
 - name: Install Packages
   import_tasks: packages.yml
 
