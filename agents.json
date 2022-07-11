@@ -254,14 +254,6 @@
         "localSsds": 1
       },
       {
-        "queue": "debug-reboot",
-        "name": "kb-debug-reboot",
-        "machineType": "n2-standard-4",
-        "image": "kb-ubuntu-20220608112917",
-        "idleTimeoutMins": 360,
-        "exitAfterOneJob": false
-      },
-      {
         "queue": "n2d-4",
         "name": "kb-n2d-4",
         "machineType": "n2d-standard-4",
@@ -289,6 +281,13 @@
           "asia-south2-b",
           "asia-south2-c"
         ]
+      },
+      {
+        "queue": "datavis-n2-2",
+        "name": "kb-dv-n2-2",
+        "machineType": "n2-standard-2",
+        "idleTimeoutMins": 10,
+        "exitAfterOneJob": false
       }
     ]
   }
