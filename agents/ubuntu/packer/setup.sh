@@ -96,6 +96,7 @@ gcloud auth configure-docker --quiet
   cd /var/lib/gitmirrors
   git clone --mirror https://github.com/elastic/kibana.git https---github-com-elastic-kibana-git &
   git clone --mirror https://github.com/elastic/elasticsearch.git https---github-com-elastic-elasticsearch-git &
+  git clone --mirror https://github.com/elastic/elastic-charts.git https---github-com-elastic-elastic-charts-git &
   wait
 
   chown -R "$AGENT_USER:$AGENT_USER" .
