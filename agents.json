@@ -270,6 +270,50 @@
         ]
       },
       {
+        "queue": "n2-16-spot",
+        "name": "kb-n2-16-spot",
+        "machineType": "n2-standard-16",
+        "spot": true,
+        "disableExternalIp": false,
+        "buildPath": "/dev/shm/builds",
+        "zones": [
+          "northamerica-northeast2-a",
+          "northamerica-northeast2-b",
+          "northamerica-northeast2-c",
+          "europe-west2-a",
+          "europe-west2-b",
+          "europe-west2-c",
+          "southamerica-east1-a",
+          "southamerica-east1-b",
+          "southamerica-east1-c",
+          "asia-south2-a",
+          "asia-south2-b",
+          "asia-south2-c"
+        ]
+      },
+      {
+        "queue": "n2-32-spot",
+        "name": "kb-n2-32-spot",
+        "machineType": "n2-standard-32",
+        "spot": true,
+        "disableExternalIp": false,
+        "buildPath": "/dev/shm/builds",
+        "zones": [
+          "northamerica-northeast2-a",
+          "northamerica-northeast2-b",
+          "northamerica-northeast2-c",
+          "europe-west2-a",
+          "europe-west2-b",
+          "europe-west2-c",
+          "southamerica-east1-a",
+          "southamerica-east1-b",
+          "southamerica-east1-c",
+          "asia-south2-a",
+          "asia-south2-b",
+          "asia-south2-c"
+        ]
+      },
+      {
         "queue": "n2d-2",
         "name": "kb-n2d-2",
         "machineType": "n2d-standard-2",
