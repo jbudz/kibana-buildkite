@@ -37,3 +37,22 @@ One of the ansible plugins currently requires this: `export OBJC_DISABLE_INITIAL
    - Be sure not to run against all of the hosts, as it will reboot them
 6. Provision the instance `ansible-playbook -l <hostname_from_hosts_file> provision.yml`
    - This will fully set up the instance, and connect it to Buildkite
+
+# Accessing the instances
+
+The credentials are stored in Vault: `vault read secret/kibana-issues/dev/macstadium-admin-credentials`
+
+Then, simply:
+
+```bash
+ssh administrator@<instance hostname>
+```
+
+## Current instances
+
+You can find these in the `hosts` file in this repo.
+
+| Agent Name   | Hostname                                           |
+| ------------ | -------------------------------------------------- |
+| macos-x86-01 | worker-c079093yjrv2.build.macstadium.elasticnet.co |
+| macos-arm-01 | worker-h2wdt4vyq6ny.build.macstadium.elasticnet.co |
