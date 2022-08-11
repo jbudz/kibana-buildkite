@@ -13,7 +13,7 @@ source "googlecompute" "bk_dev" {
   project_id          = "elastic-kibana-ci"
   source_image_family = "ubuntu-2004-lts"
   ssh_username        = "packer"
-  zone                = "us-central1-a"
+  zone                = "us-central1-b"
 }
 
 build {
