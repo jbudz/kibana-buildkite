@@ -1,4 +1,5 @@
 {
+  "pauseAllAgents": false,
   "gcp": {
     "project": "elastic-kibana-ci",
     "zones": ["us-central1-a", "us-central1-c", "us-central1-f"],
