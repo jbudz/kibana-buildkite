@@ -378,6 +378,48 @@
           "asia-south2-b",
           "asia-south2-c"
         ]
+      },
+      {
+        "queue": "c2-16-spot",
+        "name": "kb-c2-16-spot",
+        "machineType": "c2-standard-16",
+        "spot": true,
+        "maximumAgents": 20,
+        "zones": [
+          "northamerica-northeast2-a",
+          "northamerica-northeast2-b",
+          "northamerica-northeast2-c",
+          "europe-west2-a",
+          "europe-west2-b",
+          "europe-west2-c",
+          "southamerica-east1-a",
+          "southamerica-east1-b",
+          "southamerica-east1-c",
+          "asia-south2-a",
+          "asia-south2-b",
+          "asia-south2-c"
+        ]
+      },
+      {
+        "queue": "c2-30-spot",
+        "name": "kb-c2-30-spot",
+        "machineType": "c2-standard-30",
+        "spot": true,
+        "maximumAgents": 20,
+        "zones": [
+          "northamerica-northeast2-a",
+          "northamerica-northeast2-b",
+          "northamerica-northeast2-c",
+          "europe-west2-a",
+          "europe-west2-b",
+          "europe-west2-c",
+          "southamerica-east1-a",
+          "southamerica-east1-b",
+          "southamerica-east1-c",
+          "asia-south2-a",
+          "asia-south2-b",
+          "asia-south2-c"
+        ]
       }
     ]
   }
